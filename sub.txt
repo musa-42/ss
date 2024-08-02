@@ -2,6 +2,8 @@
 //profile-update-interval: 24
 //subscription-userinfo: upload=0; download=0; total=10737418240000000; expire=2546249531
 
-ss://MjAyMi1ibGFrZTMtY2hhY2hhMjAtcG9seTEzMDU6Smx6d2dPVlBCV3dQbytFK0VwdXVNM0F2T09LU29mb3BTZW1zSjBlVm15cz0=@45.76.36.193:8080#🇳🇱 by Ted
-ss://MjAyMi1ibGFrZTMtY2hhY2hhMjAtcG9seTEzMDU6TnZGamU4cHJRbExHYlUzTlFMWlBlWGRneklReHVFT3VnUTI5WlFBZG9kaz0@89.251.22.76:10240#🇵🇱 all
-ss://bm9uZTptdXNh@83.147.19.205:1111#🇦🇺 irancell
+ss://MjAyMi1ibGFrZTMtY2hhY2hhMjAtcG9seTEzMDU6Smx6d2dPVlBCV3dQbytFK0VwdXVNM0F2T09LU29mb3BTZW1zSjBlVm15cz0=@45.76.36.193:8080#🇳🇱 by Ted *online
+
+ss://MjAyMi1ibGFrZTMtY2hhY2hhMjAtcG9seTEzMDU6TnZGamU4cHJRbExHYlUzTlFMWlBlWGRneklReHVFT3VnUTI5WlFBZG9kaz0@89.251.22.76:10240#🇵🇱 all *offline
+
+ss://bm9uZTptdXNh@83.147.19.205:1111#🇬🇧 irancell *offline
