@@ -2,10 +2,235 @@
 //profile-update-interval: 24
 //subscription-userinfo: upload=0; download=0; total=10737418240000000; expire=2546249531
 
-hy2://5baccbaa83e9ae34@209.38.99.163:26920/?insecure=1&sni=bmi.ir&obfs=salamander&obfs-password=5baccbaa83e9ae34#hy🇳🇱
-
-ss://MjAyMi1ibGFrZTMtY2hhY2hhMjAtcG9seTEzMDU6Smx6d2dPVlBCV3dQbytFK0VwdXVNM0F2T09LU29mb3BTZW1zSjBlVm15cz0=@45.76.36.193:8080#🇳🇱
-
-ss://MjAyMi1ibGFrZTMtY2hhY2hhMjAtcG9seTEzMDU6TnZGamU4cHJRbExHYlUzTlFMWlBlWGRneklReHVFT3VnUTI5WlFBZG9kaz0@89.251.22.76:10240#🇵🇱
-
-ss://bm9uZTptdXNh@83.147.19.205:1111#🇬🇧
+{
+   "dns": {
+     "final": "local-dns",
+     "rules": [
+       {
+         "clash_mode": "Global",
+         "server": "proxy-dns",
+         "source_ip_cidr": [
+           "172.19.0.0/30"
+         ]
+       },
+       {
+         "server": "proxy-dns",
+         "source_ip_cidr": [
+           "172.19.0.0/30"
+         ]
+       },
+       {
+         "clash_mode": "Direct",
+         "server": "direct-dns"
+       },
+       {
+         "rule_set": [
+           "geosite-ir"
+         ],
+         "server": "direct-dns"
+       }
+     ],
+     "servers": [
+       {
+         "address": "tcp://8.8.8.8",
+         "address_resolver": "local-dns",
+         "detour": "proxy",
+         "tag": "proxy-dns"
+       },
+       {
+         "address": "local",
+         "detour": "direct",
+         "tag": "local-dns"
+       },
+       {
+         "address": "rcode://success",
+         "tag": "block"
+       },
+       {
+         "address": "tcp://8.8.8.8",
+         "detour": "direct",
+         "tag": "direct-dns"
+       }
+     ],
+     "strategy": "prefer_ipv4"
+   },
+   "inbounds": [
+     {
+       "auto_route": true,
+       "endpoint_independent_nat": false,
+       "inet4_address": "172.19.0.1/30",
+       "mtu": 9000,
+       "platform": {
+         "http_proxy": {
+           "enabled": true,
+           "server": "127.0.0.1",
+           "server_port": 2080
+         }
+       },
+       "sniff": true,
+       "stack": "system",
+       "strict_route": false,
+       "type": "tun"
+     },
+     {
+       "listen": "127.0.0.1",
+       "listen_port": 2080,
+       "sniff": true,
+       "type": "mixed",
+       "users": []
+     }
+   ],
+   "outbounds": [
+     {
+       "outbounds": [
+         "auto",
+         "direct",
+         "hysteria2-44594",
+         "hysteria2-51321",
+         "1.hysteria2-51321"
+       ],
+       "tag": "proxy",
+       "type": "selector"
+     },
+     {
+       "interval": "10m",
+       "outbounds": [
+         "hysteria2-44594",
+         "hysteria2-51321",
+         "1.hysteria2-51321"
+       ],
+       "tag": "auto",
+       "tolerance": 50,
+       "type": "urltest",
+       "url": "http://www.gstatic.com/generate_204"
+     },
+     {
+       "tag": "direct",
+       "type": "direct"
+     },
+     {
+       "tag": "dns-out",
+       "type": "dns"
+     },
+     {
+       "tag": "block",
+       "type": "block"
+     },
+     {
+       "obfs": {
+         "password": "musa",
+         "type": "salamander"
+       },
+       "password": "c77bsESFry",
+       "server": "83.147.19.160",
+       "server_port": 44594,
+       "tag": "hysteria2-44594",
+       "tls": {
+         "ech": {
+           "config": [
+             "-----BEGIN ECH CONFIGS-----",
+             "ADn+DQA1AAAgACD7GxxOOe1d1VuNPGHWHasNSNwS35JwJ6wg6mYyvd8TLwAIAAEA",
+             "AQABAAMAAicnAAA=",
+             "-----END ECH CONFIGS-----"
+           ]
+         },
+         "enabled": true,
+         "insecure": true
+       },
+       "type": "hysteria2"
+     },
+     {
+       "obfs": {
+         "password": "musa",
+         "type": "salamander"
+       },
+       "password": "mIQcXHC3Ir",
+       "server": "209.250.230.197",
+       "server_port": 51321,
+       "tag": "hysteria2-51321",
+       "tls": {
+         "enabled": true,
+         "insecure": true,
+         "server_name": ""
+       },
+       "type": "hysteria2"
+     },
+     {
+       "obfs": {
+         "password": "musa",
+         "type": "salamander"
+       },
+       "password": "mIQcXHC3Ir",
+       "server": "209.250.230.197",
+       "server_port": 51321,
+       "tag": "hysteria2-51321",
+       "tls": {
+         "ech": {
+           "config": [
+             "-----BEGIN ECH CONFIGS-----",
+             "ADn+DQA1AAAgACBi1OPRJiF/AdeaUm9KOYDjlmFdTMi7XbU7mKt4rHxjBwAIAAEA",
+             "AQABAAMAAicnAAA=",
+             "-----END ECH CONFIGS-----"
+           ]
+         },
+         "enabled": true,
+         "insecure": true
+       },
+       "type": "hysteria2"
+     }
+   ],
+   "route": {
+     "auto_detect_interface": true,
+     "final": "proxy",
+     "rule_set": [
+       {
+         "download_detour": "direct",
+         "format": "binary",
+         "tag": "geosite-ads",
+         "type": "remote",
+         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs"
+       },
+       {
+         "download_detour": "direct",
+         "format": "binary",
+         "tag": "geosite-ir",
+         "type": "remote",
+         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ir.srs"
+       },
+       {
+         "download_detour": "direct",
+         "format": "binary",
+         "tag": "geoip-ir",
+         "type": "remote",
+         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/ir.srs"
+       }
+     ],
+     "rules": [
+       {
+         "clash_mode": "Direct",
+         "outbound": "direct"
+       },
+       {
+         "clash_mode": "Global",
+         "outbound": "proxy"
+       },
+       {
+         "outbound": "dns-out",
+         "protocol": "dns"
+       },
+       {
+         "outbound": "direct",
+         "rule_set": [
+           "geoip-ir",
+           "geosite-ir"
+         ]
+       },
+       {
+         "outbound": "block",
+         "rule_set": [
+           "geosite-ads"
+         ]
+       }
+     ]
+   }
+ }
