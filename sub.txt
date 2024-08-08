@@ -1,7 +1,3 @@
-//profile-title: base64:U2FsYW0g8J+Rvg==
-//profile-update-interval: 24
-//subscription-userinfo: upload=0; download=0; total=10737418240000000; expire=2546249531
-
 {
    "dns": {
      "final": "local-dns",
@@ -86,8 +82,7 @@
          "auto",
          "direct",
          "hysteria2-44594",
-         "hysteria2-51321",
-         "1.hysteria2-51321"
+         "hysteria2-51321"
        ],
        "tag": "proxy",
        "type": "selector"
@@ -96,8 +91,7 @@
        "interval": "10m",
        "outbounds": [
          "hysteria2-44594",
-         "hysteria2-51321",
-         "1.hysteria2-51321"
+         "hysteria2-51321"
        ],
        "tag": "auto",
        "tolerance": 50,
@@ -136,22 +130,6 @@
          },
          "enabled": true,
          "insecure": true
-       },
-       "type": "hysteria2"
-     },
-     {
-       "obfs": {
-         "password": "musa",
-         "type": "salamander"
-       },
-       "password": "mIQcXHC3Ir",
-       "server": "209.250.230.197",
-       "server_port": 51321,
-       "tag": "hysteria2-51321",
-       "tls": {
-         "enabled": true,
-         "insecure": true,
-         "server_name": ""
        },
        "type": "hysteria2"
      },
