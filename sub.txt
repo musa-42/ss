@@ -28,7 +28,7 @@
      ],
      "servers": [
        {
-         "address": "tcp://8.8.8.8",
+         "address": "udp://1.1.1.1",
          "address_resolver": "local-dns",
          "detour": "proxy",
          "tag": "proxy-dns"
@@ -82,7 +82,7 @@
          "auto",
          "direct",
          "hysteria2-44594",
-         "hysteria2-51321"
+         "tuic-31454"
        ],
        "tag": "proxy",
        "type": "selector"
@@ -91,7 +91,7 @@
        "interval": "10m",
        "outbounds": [
          "hysteria2-44594",
-         "hysteria2-51321"
+         "tuic-31454"
        ],
        "tag": "auto",
        "tolerance": 50,
@@ -134,19 +134,16 @@
        "type": "hysteria2"
      },
      {
-       "obfs": {
-         "password": "musa",
-         "type": "salamander"
-       },
-       "password": "mIQcXHC3Ir",
-       "server": "209.250.230.197",
-       "server_port": 51321,
-       "tag": "hysteria2-51321",
+       "congestion_control": "cubic",
+       "password": "c77bsESFry",
+       "server": "83.147.19.160",
+       "server_port": 31454,
+       "tag": "tuic-31454",
        "tls": {
          "ech": {
            "config": [
              "-----BEGIN ECH CONFIGS-----",
-             "ADn+DQA1AAAgACBi1OPRJiF/AdeaUm9KOYDjlmFdTMi7XbU7mKt4rHxjBwAIAAEA",
+             "ADn+DQA1AAAgACD7GxxOOe1d1VuNPGHWHasNSNwS35JwJ6wg6mYyvd8TLwAIAAEA",
              "AQABAAMAAicnAAA=",
              "-----END ECH CONFIGS-----"
            ]
@@ -154,7 +151,9 @@
          "enabled": true,
          "insecure": true
        },
-       "type": "hysteria2"
+       "type": "tuic",
+       "uuid": "c0b9a6ea-2214-4796-aca4-3fe713b96183",
+       "zero_rtt_handshake": true
      }
    ],
    "route": {
