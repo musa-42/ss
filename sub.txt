@@ -35,6 +35,7 @@
      ],
      "strategy": "prefer_ipv4"
    },
+   "experimental": null,
    "inbounds": [
      {
        "auto_route": true,
@@ -70,9 +71,8 @@
          "tuic-31454",
          "vless-19746",
          "hysteria-41514",
-         "vless-26054",
          "trojan-46139",
-         "vless-21421-tor"
+         "hysteria2-31583-tor"
        ],
        "tag": "proxy",
        "type": "selector"
@@ -84,9 +84,8 @@
          "tuic-31454",
          "vless-19746",
          "hysteria-41514",
-         "vless-26054",
          "trojan-46139",
-         "vless-21421-tor"
+         "hysteria2-31583-tor"
        ],
        "tag": "auto",
        "tolerance": 50,
@@ -199,18 +198,6 @@
      },
      {
        "multiplex": {},
-       "server": "83.147.19.34",
-       "server_port": 26054,
-       "tag": "vless-26054",
-       "tls": {},
-       "transport": {
-         "type": "http"
-       },
-       "type": "vless",
-       "uuid": "c0b9a6ea-2214-4796-aca4-3fe713b96183"
-     },
-     {
-       "multiplex": {},
        "password": "c77bsESFry",
        "server": "83.147.19.34",
        "server_port": 46139,
@@ -231,19 +218,15 @@
        "type": "trojan"
      },
      {
-       "multiplex": {},
+       "password": "c77bsESFry",
        "server": "83.147.19.34",
-       "server_port": 21421,
-       "tag": "vless-21421-tor",
+       "server_port": 31583,
+       "tag": "hysteria2-31583-tor",
        "tls": {
          "enabled": true,
          "insecure": true
        },
-       "transport": {
-         "type": "http"
-       },
-       "type": "vless",
-       "uuid": "c0b9a6ea-2214-4796-aca4-3fe713b96183"
+       "type": "hysteria2"
      }
    ],
    "route": {
