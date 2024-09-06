@@ -14,21 +14,11 @@
          "source_ip_cidr": [
            "172.19.0.0/30"
          ]
-       },
-       {
-         "clash_mode": "Direct",
-         "server": "direct-dns"
-       },
-       {
-         "rule_set": [
-           "geosite-ir"
-         ],
-         "server": "direct-dns"
        }
      ],
      "servers": [
        {
-         "address": "udp://1.1.1.1",
+         "address": "tcp://8.8.8.8",
          "address_resolver": "local-dns",
          "detour": "proxy",
          "tag": "proxy-dns"
@@ -41,11 +31,6 @@
        {
          "address": "rcode://success",
          "tag": "block"
-       },
-       {
-         "address": "tcp://8.8.8.8",
-         "detour": "direct",
-         "tag": "direct-dns"
        }
      ],
      "strategy": "prefer_ipv4"
@@ -86,7 +71,8 @@
          "vless-19746",
          "hysteria-41514",
          "vless-26054",
-         "trojan-46139"
+         "trojan-46139",
+         "vless-21421-tor"
        ],
        "tag": "proxy",
        "type": "selector"
@@ -99,7 +85,8 @@
          "vless-19746",
          "hysteria-41514",
          "vless-26054",
-         "trojan-46139"
+         "trojan-46139",
+         "vless-21421-tor"
        ],
        "tag": "auto",
        "tolerance": 50,
@@ -242,6 +229,21 @@
        },
        "transport": {},
        "type": "trojan"
+     },
+     {
+       "multiplex": {},
+       "server": "83.147.19.34",
+       "server_port": 21421,
+       "tag": "vless-21421-tor",
+       "tls": {
+         "enabled": true,
+         "insecure": true
+       },
+       "transport": {
+         "type": "http"
+       },
+       "type": "vless",
+       "uuid": "c0b9a6ea-2214-4796-aca4-3fe713b96183"
      }
    ],
    "route": {
