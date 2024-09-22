@@ -72,7 +72,9 @@
          "vless-19746",
          "hysteria-41514",
          "trojan-46139",
-         "hysteria2-31583-tor"
+         "hysteria2-31583-tor",
+         "hysteria2-poland",
+         "1.hysteria2-poland-tor"
        ],
        "tag": "proxy",
        "type": "selector"
@@ -85,7 +87,9 @@
          "vless-19746",
          "hysteria-41514",
          "trojan-46139",
-         "hysteria2-31583-tor"
+         "hysteria2-31583-tor",
+         "hysteria2-poland",
+         "1.hysteria2-poland-tor"
        ],
        "tag": "auto",
        "tolerance": 50,
@@ -225,6 +229,30 @@
        "tls": {
          "enabled": true,
          "insecure": true
+       },
+       "type": "hysteria2"
+     },
+     {
+       "password": "a3WZZMuptG",
+       "server": "89.251.22.195",
+       "server_port": 48791,
+       "tag": "hysteria2-poland",
+       "tls": {
+         "enabled": true,
+         "insecure": true,
+         "server_name": ""
+       },
+       "type": "hysteria2"
+     },
+     {
+       "password": "a3WZZMuptG",
+       "server": "89.251.22.195",
+       "server_port": 57421,
+       "tag": "1.hysteria2-poland-tor",
+       "tls": {
+         "enabled": true,
+         "insecure": true,
+         "server_name": ""
        },
        "type": "hysteria2"
      }
