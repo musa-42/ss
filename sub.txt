@@ -67,14 +67,12 @@
        "outbounds": [
          "auto",
          "direct",
-         "hysteria2-44594",
-         "tuic-31454",
-         "vless-19746",
-         "hysteria-41514",
-         "trojan-46139",
-         "hysteria2-31583-tor",
+         "hysteria2-uk",
+         "vless-uk",
+         "hysteria2-uk-tor",
          "hysteria2-poland",
-         "1.hysteria2-poland-tor"
+         "1.hysteria2-poland-tor",
+         "2.vless-poland"
        ],
        "tag": "proxy",
        "type": "selector"
@@ -82,14 +80,12 @@
      {
        "interval": "10m",
        "outbounds": [
-         "hysteria2-44594",
-         "tuic-31454",
-         "vless-19746",
-         "hysteria-41514",
-         "trojan-46139",
-         "hysteria2-31583-tor",
+         "hysteria2-uk",
+         "vless-uk",
+         "hysteria2-uk-tor",
          "hysteria2-poland",
-         "1.hysteria2-poland-tor"
+         "1.hysteria2-poland-tor",
+         "2.vless-poland"
        ],
        "tag": "auto",
        "tolerance": 50,
@@ -116,7 +112,7 @@
        "password": "c77bsESFry",
        "server": "83.147.19.34",
        "server_port": 44594,
-       "tag": "hysteria2-44594",
+       "tag": "hysteria2-uk",
        "tls": {
          "ech": {
            "config": [
@@ -132,32 +128,10 @@
        "type": "hysteria2"
      },
      {
-       "congestion_control": "cubic",
-       "password": "c77bsESFry",
-       "server": "83.147.19.34",
-       "server_port": 31454,
-       "tag": "tuic-31454",
-       "tls": {
-         "ech": {
-           "config": [
-             "-----BEGIN ECH CONFIGS-----",
-             "ADn+DQA1AAAgACD7GxxOOe1d1VuNPGHWHasNSNwS35JwJ6wg6mYyvd8TLwAIAAEA",
-             "AQABAAMAAicnAAA=",
-             "-----END ECH CONFIGS-----"
-           ]
-         },
-         "enabled": true,
-         "insecure": true
-       },
-       "type": "tuic",
-       "uuid": "c0b9a6ea-2214-4796-aca4-3fe713b96183",
-       "zero_rtt_handshake": true
-     },
-     {
        "multiplex": {},
        "server": "83.147.19.34",
        "server_port": 19746,
-       "tag": "vless-19746",
+       "tag": "vless-uk",
        "tls": {
          "ech": {
            "config": [
@@ -179,53 +153,10 @@
        "uuid": "c0b9a6ea-2214-4796-aca4-3fe713b96183"
      },
      {
-       "auth_str": "c77bsESFry",
-       "down_mbps": 100,
-       "obfs": "musa",
-       "server": "83.147.19.34",
-       "server_port": 41514,
-       "tag": "hysteria-41514",
-       "tls": {
-         "ech": {
-           "config": [
-             "-----BEGIN ECH CONFIGS-----",
-             "ADn+DQA1AAAgACD7GxxOOe1d1VuNPGHWHasNSNwS35JwJ6wg6mYyvd8TLwAIAAEA",
-             "AQABAAMAAicnAAA=",
-             "-----END ECH CONFIGS-----"
-           ]
-         },
-         "enabled": true,
-         "insecure": true
-       },
-       "type": "hysteria",
-       "up_mbps": 100
-     },
-     {
-       "multiplex": {},
-       "password": "c77bsESFry",
-       "server": "83.147.19.34",
-       "server_port": 46139,
-       "tag": "trojan-46139",
-       "tls": {
-         "ech": {
-           "config": [
-             "-----BEGIN ECH CONFIGS-----",
-             "ADn+DQA1AAAgACD7GxxOOe1d1VuNPGHWHasNSNwS35JwJ6wg6mYyvd8TLwAIAAEA",
-             "AQABAAMAAicnAAA=",
-             "-----END ECH CONFIGS-----"
-           ]
-         },
-         "enabled": true,
-         "insecure": true
-       },
-       "transport": {},
-       "type": "trojan"
-     },
-     {
        "password": "c77bsESFry",
        "server": "83.147.19.34",
        "server_port": 31583,
-       "tag": "hysteria2-31583-tor",
+       "tag": "hysteria2-uk-tor",
        "tls": {
          "enabled": true,
          "insecure": true
@@ -255,6 +186,22 @@
          "server_name": ""
        },
        "type": "hysteria2"
+     },
+     {
+       "flow": "",
+       "server": "89.251.22.195",
+       "server_port": 40236,
+       "tag": "2.vless-poland",
+       "tls": {
+         "enabled": true,
+         "insecure": true
+       },
+       "transport": {
+         "path": "/",
+         "type": "ws"
+       },
+       "type": "vless",
+       "uuid": "2c41dea4-4ab8-4978-f3a9-6ddd5687e735"
      }
    ],
    "route": {
