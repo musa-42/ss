@@ -66,7 +66,16 @@
        "outbounds": [
          "auto",
          "direct",
-         "hysteria2-31176"
+         "hysteria2-31176",
+         "vless-49998",
+         "🇫🇮 | 88.04 GB / 200.0 GB",
+         "1.🇩🇪 | User= saghi5",
+         "2.🇨🇭 | EXP=∞",
+         "3.Dojo -",
+         "4.Dojo -🇵🇱 Poland",
+         "5.Dojo -🇬🇧 United kingdom",
+         "6.Dojo -🇺🇸 United state ",
+         "7.V6 - 🇫🇮 Finland "
        ],
        "tag": "proxy",
        "type": "selector"
@@ -74,7 +83,16 @@
      {
        "interval": "10m",
        "outbounds": [
-         "hysteria2-31176"
+         "hysteria2-31176",
+         "vless-49998",
+         "🇫🇮 | 88.04 GB / 200.0 GB",
+         "1.🇩🇪 | User= saghi5",
+         "2.🇨🇭 | EXP=∞",
+         "3.Dojo -",
+         "4.Dojo -🇵🇱 Poland",
+         "5.Dojo -🇬🇧 United kingdom",
+         "6.Dojo -🇺🇸 United state ",
+         "7.V6 - 🇫🇮 Finland "
        ],
        "tag": "auto",
        "tolerance": 50,
@@ -112,6 +130,160 @@
          "insecure": true
        },
        "type": "hysteria2"
+     },
+     {
+       "multiplex": {
+         "enabled": true,
+         "padding": false
+       },
+       "server": "83.147.18.74",
+       "server_port": 49998,
+       "tag": "vless-49998",
+       "tls": {
+         "disable_sni": true,
+         "ech": {
+           "config": [
+             "-----BEGIN ECH CONFIGS-----",
+             "ADn+DQA1AAAgACCi2Pkg+JdK8PatPf+PsTFspn87JMMZKB5KJI01lRsQbgAIAAEA",
+             "AQABAAMAAicnAAA=",
+             "-----END ECH CONFIGS-----"
+           ]
+         },
+         "enabled": true,
+         "insecure": true
+       },
+       "transport": {
+         "early_data_header_name": "Sec-WebSocket-Protocol",
+         "path": "/",
+         "type": "ws"
+       },
+       "type": "vless",
+       "uuid": "e9d1409a-4bc4-47d1-f81a-39e10ba6e4ef"
+     },
+     {
+       "flow": "",
+       "server": "tl1.rexb.ir",
+       "server_port": 8443,
+       "tag": "🇫🇮 | 88.04 GB / 200.0 GB",
+       "tls": {
+         "enabled": true,
+         "server_name": "super.rexb.ir"
+       },
+       "transport": {},
+       "type": "vless",
+       "uuid": "1db6850b-bc10-44b9-aad9-afb565d7f52a"
+     },
+     {
+       "flow": "",
+       "server": "1.rexg.ir",
+       "server_port": 11001,
+       "tag": "1.🇩🇪 | User= saghi5",
+       "tls": {},
+       "transport": {
+         "host": [
+           "viabtc.com"
+         ],
+         "path": "/",
+         "type": "http"
+       },
+       "type": "vless",
+       "uuid": "1db6850b-bc10-44b9-aad9-afb565d7f52a"
+     },
+     {
+       "flow": "",
+       "server": "7.rexg.ir",
+       "server_port": 11001,
+       "tag": "2.🇨🇭 | EXP=∞",
+       "tls": {},
+       "transport": {
+         "host": [
+           "viabtc.com"
+         ],
+         "path": "/",
+         "type": "http"
+       },
+       "type": "vless",
+       "uuid": "1db6850b-bc10-44b9-aad9-afb565d7f52a"
+     },
+     {
+       "flow": "",
+       "server": "3.rexg.ir",
+       "server_port": 11001,
+       "tag": "3.Dojo -",
+       "tls": {},
+       "transport": {
+         "host": [
+           "viabtc.com"
+         ],
+         "path": "/",
+         "type": "http"
+       },
+       "type": "vless",
+       "uuid": "1db6850b-bc10-44b9-aad9-afb565d7f52a"
+     },
+     {
+       "flow": "",
+       "server": "5.rexg.ir",
+       "server_port": 11001,
+       "tag": "4.Dojo -🇵🇱 Poland",
+       "tls": {},
+       "transport": {
+         "host": [
+           "speedtest.net"
+         ],
+         "path": "/",
+         "type": "http"
+       },
+       "type": "vless",
+       "uuid": "1db6850b-bc10-44b9-aad9-afb565d7f52a"
+     },
+     {
+       "flow": "",
+       "server": "2.rexg.ir",
+       "server_port": 11006,
+       "tag": "5.Dojo -🇬🇧 United kingdom",
+       "tls": {},
+       "transport": {
+         "path": "",
+         "type": "ws"
+       },
+       "type": "vless",
+       "uuid": "1db6850b-bc10-44b9-aad9-afb565d7f52a"
+     },
+     {
+       "flow": "",
+       "server": "4.rexg.ir",
+       "server_port": 4002,
+       "tag": "6.Dojo -🇺🇸 United state ",
+       "tls": {},
+       "transport": {
+         "path": "",
+         "type": "ws"
+       },
+       "type": "vless",
+       "uuid": "1db6850b-bc10-44b9-aad9-afb565d7f52a"
+     },
+     {
+       "flow": "xtls-rprx-vision",
+       "server": "v6.rexj.ir",
+       "server_port": 999,
+       "tag": "7.V6 - 🇫🇮 Finland ",
+       "tls": {
+         "enabled": true,
+         "reality": {
+           "enabled": true,
+           "public_key": "cEqoVg0eoDCwSBwgMObMk7Cnq6zOgt2nagPL8bb7py8",
+           "short_id": "dec7f3ce"
+         },
+         "server_name": "viabtc.com",
+         "utls": {
+           "enabled": true,
+           "fingerprint": "chrome"
+         }
+       },
+       "transport": {},
+       "type": "vless",
+       "uuid": "1db6850b-bc10-44b9-aad9-afb565d7f52a"
      }
    ],
    "route": {
