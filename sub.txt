@@ -1,4 +1,5 @@
 {
+
    "dns": {
      "final": "local-dns",
      "rules": [
