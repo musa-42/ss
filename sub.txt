@@ -108,7 +108,7 @@
        },
        "type": "tuic",
        "uuid": "4a88d1d2-b6cc-4c91-84d0-107a81d38a51",
-       "zero_rtt_handshake": true
+       "zero_rtt_handshake": false
      },
      {
        "congestion_control": "new_reno",
@@ -123,7 +123,7 @@
        },
        "type": "tuic",
        "uuid": "4a88d1d2-b6cc-4c91-84d0-107a81d38a51",
-       "zero_rtt_handshake": true
+       "zero_rtt_handshake": false
      }
    ],
    "route": {
