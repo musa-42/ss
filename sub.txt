@@ -1,40 +1,4 @@
 {
-   "dns": {
-     "final": "local-dns",
-     "rules": [
-       {
-         "clash_mode": "Global",
-         "server": "proxy-dns",
-         "source_ip_cidr": [
-           "172.19.0.0/30"
-         ]
-       },
-       {
-         "server": "proxy-dns",
-         "source_ip_cidr": [
-           "172.19.0.0/30"
-         ]
-       }
-     ],
-     "servers": [
-       {
-         "address": "tcp://8.8.8.8",
-         "address_resolver": "local-dns",
-         "detour": "proxy",
-         "tag": "proxy-dns"
-       },
-       {
-         "address": "local",
-         "detour": "direct",
-         "tag": "local-dns"
-       },
-       {
-         "address": "rcode://success",
-         "tag": "block"
-       }
-     ],
-     "strategy": "prefer_ipv4"
-   },
    "inbounds": [
      {
        "auto_route": true,
@@ -66,16 +30,7 @@
        "outbounds": [
          "auto",
          "direct",
-         "hysteria2-31176",
-         "vless-49998",
-         "🇫🇮 | 88.04 GB / 200.0 GB",
-         "1.🇩🇪 | User= saghi5",
-         "2.🇨🇭 | EXP=∞",
-         "3.Dojo -",
-         "4.Dojo -🇵🇱 Poland",
-         "5.Dojo -🇬🇧 United kingdom",
-         "6.Dojo -🇺🇸 United state ",
-         "7.V6 - 🇫🇮 Finland "
+         "vmess-16406"
        ],
        "tag": "proxy",
        "type": "selector"
@@ -83,16 +38,7 @@
      {
        "interval": "10m",
        "outbounds": [
-         "hysteria2-31176",
-         "vless-49998",
-         "🇫🇮 | 88.04 GB / 200.0 GB",
-         "1.🇩🇪 | User= saghi5",
-         "2.🇨🇭 | EXP=∞",
-         "3.Dojo -",
-         "4.Dojo -🇵🇱 Poland",
-         "5.Dojo -🇬🇧 United kingdom",
-         "6.Dojo -🇺🇸 United state ",
-         "7.V6 - 🇫🇮 Finland "
+         "vmess-16406"
        ],
        "tag": "auto",
        "tolerance": 50,
@@ -112,220 +58,35 @@
        "type": "block"
      },
      {
-       "password": "bGEHIv77oI",
-       "server": "83.147.18.74",
-       "server_port": 1,
-       "tag": "hysteria2-31176",
-       "tls": {
-         "disable_sni": true,
-         "ech": {
-           "config": [
-             "-----BEGIN ECH CONFIGS-----",
-             "ADn+DQA1AAAgACCi2Pkg+JdK8PatPf+PsTFspn87JMMZKB5KJI01lRsQbgAIAAEA",
-             "AQABAAMAAicnAAA=",
-             "-----END ECH CONFIGS-----"
-           ]
-         },
-         "enabled": true,
-         "insecure": true
-       },
-       "type": "hysteria2"
-     },
-     {
+       "authenticated_length": true,
+       "global_padding": false,
        "multiplex": {
-         "enabled": true,
-         "padding": false
+         "enabled": true
        },
-       "server": "83.147.18.74",
-       "server_port": 49998,
-       "tag": "vless-49998",
+       "security": "chacha20-poly1305",
+       "server": "146.103.40.150",
+       "server_port": 16406,
+       "tag": "vmess-16406",
        "tls": {
-         "disable_sni": true,
-         "ech": {
-           "config": [
-             "-----BEGIN ECH CONFIGS-----",
-             "ADn+DQA1AAAgACCi2Pkg+JdK8PatPf+PsTFspn87JMMZKB5KJI01lRsQbgAIAAEA",
-             "AQABAAMAAicnAAA=",
-             "-----END ECH CONFIGS-----"
-           ]
-         },
          "enabled": true,
-         "insecure": true
+         "insecure": true,
+         "server_name": "www.speedtest.net"
        },
        "transport": {
          "early_data_header_name": "Sec-WebSocket-Protocol",
-         "path": "/",
-         "type": "ws"
-       },
-       "type": "vless",
-       "uuid": "e9d1409a-4bc4-47d1-f81a-39e10ba6e4ef"
-     },
-     {
-       "flow": "",
-       "server": "tl1.rexb.ir",
-       "server_port": 8443,
-       "tag": "🇫🇮 | 88.04 GB / 200.0 GB",
-       "tls": {
-         "enabled": true,
-         "server_name": "super.rexb.ir"
-       },
-       "transport": {},
-       "type": "vless",
-       "uuid": "1db6850b-bc10-44b9-aad9-afb565d7f52a"
-     },
-     {
-       "flow": "",
-       "server": "1.rexg.ir",
-       "server_port": 11001,
-       "tag": "1.🇩🇪 | User= saghi5",
-       "tls": {},
-       "transport": {
-         "host": [
-           "viabtc.com"
-         ],
-         "path": "/",
-         "type": "http"
-       },
-       "type": "vless",
-       "uuid": "1db6850b-bc10-44b9-aad9-afb565d7f52a"
-     },
-     {
-       "flow": "",
-       "server": "7.rexg.ir",
-       "server_port": 11001,
-       "tag": "2.🇨🇭 | EXP=∞",
-       "tls": {},
-       "transport": {
-         "host": [
-           "viabtc.com"
-         ],
-         "path": "/",
-         "type": "http"
-       },
-       "type": "vless",
-       "uuid": "1db6850b-bc10-44b9-aad9-afb565d7f52a"
-     },
-     {
-       "flow": "",
-       "server": "3.rexg.ir",
-       "server_port": 11001,
-       "tag": "3.Dojo -",
-       "tls": {},
-       "transport": {
-         "host": [
-           "viabtc.com"
-         ],
-         "path": "/",
-         "type": "http"
-       },
-       "type": "vless",
-       "uuid": "1db6850b-bc10-44b9-aad9-afb565d7f52a"
-     },
-     {
-       "flow": "",
-       "server": "5.rexg.ir",
-       "server_port": 11001,
-       "tag": "4.Dojo -🇵🇱 Poland",
-       "tls": {},
-       "transport": {
-         "host": [
-           "speedtest.net"
-         ],
-         "path": "/",
-         "type": "http"
-       },
-       "type": "vless",
-       "uuid": "1db6850b-bc10-44b9-aad9-afb565d7f52a"
-     },
-     {
-       "flow": "",
-       "server": "2.rexg.ir",
-       "server_port": 11006,
-       "tag": "5.Dojo -🇬🇧 United kingdom",
-       "tls": {},
-       "transport": {
-         "path": "",
-         "type": "ws"
-       },
-       "type": "vless",
-       "uuid": "1db6850b-bc10-44b9-aad9-afb565d7f52a"
-     },
-     {
-       "flow": "",
-       "server": "4.rexg.ir",
-       "server_port": 4002,
-       "tag": "6.Dojo -🇺🇸 United state ",
-       "tls": {},
-       "transport": {
-         "path": "",
-         "type": "ws"
-       },
-       "type": "vless",
-       "uuid": "1db6850b-bc10-44b9-aad9-afb565d7f52a"
-     },
-     {
-       "flow": "xtls-rprx-vision",
-       "server": "v6.rexj.ir",
-       "server_port": 999,
-       "tag": "7.V6 - 🇫🇮 Finland ",
-       "tls": {
-         "enabled": true,
-         "reality": {
-           "enabled": true,
-           "public_key": "cEqoVg0eoDCwSBwgMObMk7Cnq6zOgt2nagPL8bb7py8",
-           "short_id": "dec7f3ce"
+         "headers": {
+           "Host": "www.speedtest.net"
          },
-         "server_name": "viabtc.com",
-         "utls": {
-           "enabled": true,
-           "fingerprint": "chrome"
-         }
+         "path": "/",
+         "type": "ws"
        },
-       "transport": {},
-       "type": "vless",
-       "uuid": "1db6850b-bc10-44b9-aad9-afb565d7f52a"
+       "type": "vmess",
+       "uuid": "1e19bf68-e9c1-48c6-f944-858e3bf0af27"
      }
    ],
    "route": {
      "auto_detect_interface": true,
      "final": "proxy",
-     "rule_set": [
-       {
-         "download_detour": "direct",
-         "format": "binary",
-         "tag": "geosite-ads",
-         "type": "remote",
-         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs"
-       },
-       {
-         "download_detour": "direct",
-         "format": "binary",
-         "tag": "geosite-private",
-         "type": "remote",
-         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/private.srs"
-       },
-       {
-         "download_detour": "direct",
-         "format": "binary",
-         "tag": "geosite-ir",
-         "type": "remote",
-         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ir.srs"
-       },
-       {
-         "download_detour": "direct",
-         "format": "binary",
-         "tag": "geoip-private",
-         "type": "remote",
-         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/private.srs"
-       },
-       {
-         "download_detour": "direct",
-         "format": "binary",
-         "tag": "geoip-ir",
-         "type": "remote",
-         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/ir.srs"
-       }
-     ],
      "rules": [
        {
          "clash_mode": "Direct",
@@ -334,26 +95,6 @@
        {
          "clash_mode": "Global",
          "outbound": "proxy"
-       },
-       {
-         "outbound": "dns-out",
-         "protocol": "dns"
-       },
-       {
-         "outbound": "block",
-         "rule_set": [
-           "geosite-ads"
-         ]
-       },
-       {
-         "outbound": "direct",
-         "rule_set": [
-           "geoip-private",
-           "geosite-private",
-           "geosite-ads",
-           "geosite-ir",
-           "geoip-ir"
-         ]
        }
      ]
    }
