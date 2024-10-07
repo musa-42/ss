@@ -75,6 +75,7 @@
      {
        "interval": "10m",
        "outbounds": [
+         "tuic-ipv6",
          "tuic-14417",
          "tuic-tor"
        ],
@@ -101,6 +102,21 @@
        "server": "146.103.40.255",
        "server_port": 14417,
        "tag": "tuic-14417",
+       "tls": {
+         "disable_sni": true,
+         "enabled": true,
+         "insecure": true
+       },
+       "type": "tuic",
+       "uuid": "4a88d1d2-b6cc-4c91-84d0-107a81d38a51",
+       "zero_rtt_handshake": false
+     },
+{
+       "congestion_control": "bbr",
+       "password": "LbUX4LMwoP",
+       "server": "2001:41d0:708:8a00::672f:962",
+       "server_port": 14417,
+       "tag": "tuic-ipv6",
        "tls": {
          "disable_sni": true,
          "enabled": true,
