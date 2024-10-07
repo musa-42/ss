@@ -96,7 +96,7 @@
        "type": "block"
      },
      {
-       "congestion_control": "new_reno",
+       "congestion_control": "bbr",
        "password": "LbUX4LMwoP",
        "server": "146.103.40.255",
        "server_port": 14417,
@@ -111,7 +111,7 @@
        "zero_rtt_handshake": false
      },
      {
-       "congestion_control": "new_reno",
+       "congestion_control": "bbr",
        "password": "LbUX4LMwoP",
        "server": "146.103.40.255",
        "server_port": 27413,
