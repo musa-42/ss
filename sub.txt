@@ -66,7 +66,8 @@
        "outbounds": [
          "auto",
          "direct",
-         "tuic-14417"
+         "tuic-14417",
+         "tuic-tor"
        ],
        "tag": "proxy",
        "type": "selector"
@@ -74,7 +75,8 @@
      {
        "interval": "10m",
        "outbounds": [
-         "tuic-14417"
+         "tuic-14417",
+         "tuic-tor"
        ],
        "tag": "auto",
        "tolerance": 50,
@@ -99,6 +101,21 @@
        "server": "146.103.40.255",
        "server_port": 14417,
        "tag": "tuic-14417",
+       "tls": {
+         "disable_sni": true,
+         "enabled": true,
+         "insecure": true
+       },
+       "type": "tuic",
+       "uuid": "4a88d1d2-b6cc-4c91-84d0-107a81d38a51",
+       "zero_rtt_handshake": true
+     },
+     {
+       "congestion_control": "new_reno",
+       "password": "LbUX4LMwoP",
+       "server": "146.103.40.255",
+       "server_port": 27413,
+       "tag": "tuic-tor",
        "tls": {
          "disable_sni": true,
          "enabled": true,
