@@ -30,7 +30,9 @@
        "outbounds": [
          "auto",
          "direct",
-         "hysteria2-39980"
+         "hysteria2-39980",
+         "🇫🇮 | 112.79 MB / 300.0 GB",
+         "1.V6 - 🇫🇮 Finland "
        ],
        "tag": "proxy",
        "type": "selector"
@@ -38,7 +40,9 @@
      {
        "interval": "10m",
        "outbounds": [
-         "hysteria2-39980"
+         "hysteria2-39980",
+         "🇫🇮 | 112.79 MB / 300.0 GB",
+         "1.V6 - 🇫🇮 Finland "
        ],
        "tag": "auto",
        "tolerance": 50,
@@ -80,6 +84,41 @@
          "insecure": true
        },
        "type": "hysteria2"
+     },
+     {
+       "flow": "",
+       "server": "tl1.rexb.ir",
+       "server_port": 8443,
+       "tag": "🇫🇮 | 112.79 MB / 300.0 GB",
+       "tls": {
+         "enabled": true,
+         "server_name": "super.rexb.ir"
+       },
+       "transport": {},
+       "type": "vless",
+       "uuid": "e23a23dc-bd16-4d67-b5b0-08ca7dbc9f34"
+     },
+     {
+       "flow": "xtls-rprx-vision",
+       "server": "v6.rexj.ir",
+       "server_port": 999,
+       "tag": "1.V6 - 🇫🇮 Finland ",
+       "tls": {
+         "enabled": true,
+         "reality": {
+           "enabled": true,
+           "public_key": "cEqoVg0eoDCwSBwgMObMk7Cnq6zOgt2nagPL8bb7py8",
+           "short_id": "dec7f3ce"
+         },
+         "server_name": "viabtc.com",
+         "utls": {
+           "enabled": true,
+           "fingerprint": "chrome"
+         }
+       },
+       "transport": {},
+       "type": "vless",
+       "uuid": "e23a23dc-bd16-4d67-b5b0-08ca7dbc9f34"
      }
    ],
    "route": {
