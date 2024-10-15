@@ -29,10 +29,8 @@
      {
        "outbounds": [
          "auto",
-         "direct",
-         "hysteria2-39980",
-         "🇫🇮 | 112.79 MB / 300.0 GB",
-         "1.V6 - 🇫🇮 Finland "
+         "hysteria2-🇩🇪",
+         "hysteria2-🇬🇧"
        ],
        "tag": "proxy",
        "type": "selector"
@@ -40,9 +38,8 @@
      {
        "interval": "10m",
        "outbounds": [
-         "hysteria2-39980",
-         "🇫🇮 | 112.79 MB / 300.0 GB",
-         "1.V6 - 🇫🇮 Finland "
+         "hysteria2-🇩🇪",
+         "hysteria2-🇬🇧"
        ],
        "tag": "auto",
        "tolerance": 50,
@@ -69,7 +66,7 @@
        "password": "dAKJ4RsW89",
        "server": "146.103.40.100",
        "server_port": 39980,
-       "tag": "hysteria2-39980",
+       "tag": "hysteria2-🇩🇪",
        "tls": {
          "disable_sni": true,
          "ech": {
@@ -86,39 +83,28 @@
        "type": "hysteria2"
      },
      {
-       "flow": "",
-       "server": "tl1.rexb.ir",
-       "server_port": 8443,
-       "tag": "🇫🇮 | 112.79 MB / 300.0 GB",
-       "tls": {
-         "enabled": true,
-         "server_name": "super.rexb.ir"
+       "obfs": {
+         "password": "musa",
+         "type": "salamander"
        },
-       "transport": {},
-       "type": "vless",
-       "uuid": "e23a23dc-bd16-4d67-b5b0-08ca7dbc9f34"
-     },
-     {
-       "flow": "xtls-rprx-vision",
-       "server": "v6.rexj.ir",
-       "server_port": 999,
-       "tag": "1.V6 - 🇫🇮 Finland ",
+       "password": "dAKJ4RsW89",
+       "server": "146.103.40.100",
+       "server_port": 58169,
+       "tag": "hysteria2-🇬🇧",
        "tls": {
-         "enabled": true,
-         "reality": {
-           "enabled": true,
-           "public_key": "cEqoVg0eoDCwSBwgMObMk7Cnq6zOgt2nagPL8bb7py8",
-           "short_id": "dec7f3ce"
+         "disable_sni": true,
+         "ech": {
+           "config": [
+             "-----BEGIN ECH CONFIGS-----",
+             "ADn+DQA1AAAgACANjpuPgcNW/e8EHS4SwdM1t9Y21glZvWESzWGOt3WJcgAIAAEA",
+             "AQABAAMAAicnAAA=",
+             "-----END ECH CONFIGS-----"
+           ]
          },
-         "server_name": "viabtc.com",
-         "utls": {
-           "enabled": true,
-           "fingerprint": "chrome"
-         }
+         "enabled": true,
+         "insecure": true
        },
-       "transport": {},
-       "type": "vless",
-       "uuid": "e23a23dc-bd16-4d67-b5b0-08ca7dbc9f34"
+       "type": "hysteria2"
      }
    ],
    "route": {
