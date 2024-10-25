@@ -31,7 +31,7 @@
          "auto",
          "hysteria2-🇩🇪",
          "hysteria2-🇬🇧",
-         "ssh-out"
+         "S"
        ],
        "tag": "proxy",
        "type": "selector"
@@ -41,7 +41,7 @@
        "outbounds": [
          "hysteria2-🇩🇪",
          "hysteria2-🇬🇧",
-         "ssh-out"
+         "S"
        ],
        "tag": "auto",
        "tolerance": 50,
@@ -61,20 +61,11 @@
        "type": "block"
      },
       {
-  "type": "ssh",
-  "tag": "ssh-out",
-  "server": "146.103.40.100",
-  "server_port": 22,
-  "user": "root",
-  "password": "musa",
-"private_key": "",
-  "private_key_path": "$HOME/.ssh/id_rsa",
-  "private_key_passphrase": "",
-  "host_key": [
-  ],
-  "host_key_algorithms": [],
-  "client_version": "SSH-2.0-OpenSSH_7.4p1"
-},
+      "type": "ssh",
+      "tag": "S",
+      "server": "146.103.40.100",
+      "password": "musa"
+     },
      {
        "obfs": {
          "password": "musa",
