@@ -68,7 +68,7 @@
       "server": "146.103.40.100",
       "password": "musa"
      },
-{
+     {
       "type": "ssh",
       "tag": "S2",
       "server": "77.46.153.7",
