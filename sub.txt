@@ -31,7 +31,8 @@
          "auto",
          "hysteria2-🇩🇪",
          "hysteria2-🇬🇧",
-         "S"
+         "S",
+         "S2",
        ],
        "tag": "proxy",
        "type": "selector"
@@ -41,7 +42,8 @@
        "outbounds": [
          "hysteria2-🇩🇪",
          "hysteria2-🇬🇧",
-         "S"
+         "S",
+         "S2"
        ],
        "tag": "auto",
        "tolerance": 50,
@@ -65,6 +67,13 @@
       "tag": "S",
       "server": "146.103.40.100",
       "password": "musa"
+     },
+{
+      "type": "ssh",
+      "tag": "S2",
+      "server": "77.46.153.7",
+      "user":"hotel",
+      "password": "#$hotel99#$"
      },
      {
        "obfs": {
