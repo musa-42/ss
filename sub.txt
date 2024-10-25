@@ -60,6 +60,14 @@
        "tag": "block",
        "type": "block"
      },
+      {
+  "type": "ssh",
+  "tag": "ssh-out",
+  "server": "146.103.40.100",
+  "server_port": 22,
+  "user": "root",
+  "password": "musa",
+},
      {
        "obfs": {
          "password": "musa",
@@ -107,14 +115,7 @@
          "insecure": true
        },
        "type": "hysteria2"
-     },{
-  "type": "ssh",
-  "tag": "ssh-out",
-  "server": "146.103.40.100",
-  "server_port": 22,
-  "user": "root",
-  "password": "musa",
-}
+     }
    ],
    "route": {
      "auto_detect_interface": true,
