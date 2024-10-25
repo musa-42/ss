@@ -30,7 +30,8 @@
        "outbounds": [
          "auto",
          "hysteria2-🇩🇪",
-         "hysteria2-🇬🇧"
+         "hysteria2-🇬🇧",
+         "ssh-out"
        ],
        "tag": "proxy",
        "type": "selector"
@@ -39,7 +40,8 @@
        "interval": "10m",
        "outbounds": [
          "hysteria2-🇩🇪",
-         "hysteria2-🇬🇧"
+         "hysteria2-🇬🇧",
+         "ssh-out"
        ],
        "tag": "auto",
        "tolerance": 50,
@@ -105,7 +107,14 @@
          "insecure": true
        },
        "type": "hysteria2"
-     }
+     },{
+  "type": "ssh",
+  "tag": "ssh-out",
+  "server": "146.103.40.100",
+  "server_port": 22,
+  "user": "root",
+  "password": "musa",
+}
    ],
    "route": {
      "auto_detect_interface": true,
