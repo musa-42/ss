@@ -32,7 +32,7 @@
          "hysteria2-🇩🇪",
          "hysteria2-🇬🇧",
          "S",
-         "S2",
+         "S2"
        ],
        "tag": "proxy",
        "type": "selector"
