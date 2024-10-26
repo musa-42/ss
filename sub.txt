@@ -29,8 +29,6 @@
      {
        "outbounds": [
          "auto",
-         "hysteria2-🇩🇪",
-         "hysteria2-🇬🇧",
          "S", "E"
        ],
        "tag": "proxy",
@@ -39,8 +37,6 @@
      {
        "interval": "10m",
        "outbounds": [
-         "hysteria2-🇩🇪",
-         "hysteria2-🇬🇧",
          "S", "E"
        ],
        "tag": "auto",
@@ -72,54 +68,6 @@
       "server": "77.46.153.7",
       "user": "hotel",
       "password": "#$hotel99#$"
-     },
-     {
-       "obfs": {
-         "password": "musa",
-         "type": "salamander"
-       },
-       "password": "dAKJ4RsW89",
-       "server": "146.103.40.100",
-       "server_port": 39980,
-       "tag": "hysteria2-🇩🇪",
-       "tls": {
-         "disable_sni": true,
-         "ech": {
-           "config": [
-             "-----BEGIN ECH CONFIGS-----",
-             "ADn+DQA1AAAgACANjpuPgcNW/e8EHS4SwdM1t9Y21glZvWESzWGOt3WJcgAIAAEA",
-             "AQABAAMAAicnAAA=",
-             "-----END ECH CONFIGS-----"
-           ]
-         },
-         "enabled": true,
-         "insecure": true
-       },
-       "type": "hysteria2"
-     },
-     {
-       "obfs": {
-         "password": "musa",
-         "type": "salamander"
-       },
-       "password": "dAKJ4RsW89",
-       "server": "146.103.40.100",
-       "server_port": 58169,
-       "tag": "hysteria2-🇬🇧",
-       "tls": {
-         "disable_sni": true,
-         "ech": {
-           "config": [
-             "-----BEGIN ECH CONFIGS-----",
-             "ADn+DQA1AAAgACANjpuPgcNW/e8EHS4SwdM1t9Y21glZvWESzWGOt3WJcgAIAAEA",
-             "AQABAAMAAicnAAA=",
-             "-----END ECH CONFIGS-----"
-           ]
-         },
-         "enabled": true,
-         "insecure": true
-       },
-       "type": "hysteria2"
      }
    ],
    "route": {
