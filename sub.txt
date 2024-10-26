@@ -56,7 +56,7 @@
        "tag": "block",
        "type": "block"
      },
-      {
+     {
       "type": "ssh",
       "tag": "S",
       "server": "146.103.40.100",
