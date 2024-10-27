@@ -1,4 +1,41 @@
 {
+   "dns": {
+     "final": "local-dns",
+     "rules": [
+       {
+         "clash_mode": "Global",
+         "server": "proxy-dns",
+         "source_ip_cidr": [
+           "172.19.0.0/30"
+         ]
+       },
+       {
+         "server": "proxy-dns",
+         "source_ip_cidr": [
+           "172.19.0.0/30"
+         ]
+       }
+     ],
+     "servers": [
+       {
+         "address": "tcp://8.8.8.8",
+         "address_resolver": "local-dns",
+         "detour": "proxy",
+         "tag": "proxy-dns"
+       },
+       {
+         "address": "local",
+         "detour": "direct",
+         "tag": "local-dns"
+       },
+       {
+         "address": "rcode://success",
+         "tag": "block"
+       }
+     ],
+     "strategy": "prefer_ipv4"
+   },
+   "experimental": null,
    "inbounds": [
      {
        "auto_route": true,
@@ -29,7 +66,9 @@
      {
        "outbounds": [
          "auto",
-         "S", "E"
+         "hysteria2-🇩🇪",
+         "hysteria2-🇬🇧",
+         "SSH-M","SSH-E"
        ],
        "tag": "proxy",
        "type": "selector"
@@ -37,7 +76,9 @@
      {
        "interval": "10m",
        "outbounds": [
-         "S", "E"
+         "hysteria2-🇩🇪",
+         "hysteria2-🇬🇧",
+         "SSH-M","SSH-E"
        ],
        "tag": "auto",
        "tolerance": 50,
@@ -58,16 +99,52 @@
      },
      {
       "type": "ssh",
-      "tag": "S",
+      "tag": "SSH-M",
       "server": "146.103.40.100",
       "password": "musa"
-     },
-     {
+    },
+    {
       "type": "ssh",
-      "tag": "E",
+      "tag": "SSH-E",
       "server": "77.46.153.7",
       "user": "hotel",
       "password": "#$hotel99#$"
+     },
+     {
+       "down_mbps": 10,
+       "obfs": {
+         "password": "musa123456789",
+         "type": "salamander"
+       },
+       "password": "dAKJ4RsW89",
+       "server": "146.103.40.100",
+       "server_port": 443,
+       "tag": "hysteria2-🇩🇪",
+       "tls": {
+         "enabled": true,
+         "insecure": true,
+         "server_name": "regxa.com"
+       },
+       "type": "hysteria2",
+       "up_mbps": 10
+     },
+     {
+       "down_mbps": 10,
+       "obfs": {
+         "password": "musa123456789",
+         "type": "salamander"
+       },
+       "password": "dAKJ4RsW89",
+       "server": "146.103.40.100",
+       "server_port": 58169,
+       "tag": "hysteria2-🇬🇧",
+       "tls": {
+         "enabled": true,
+         "insecure": true,
+         "server_name": "regxa.com"
+       },
+       "type": "hysteria2",
+       "up_mbps": 10
      }
    ],
    "route": {
@@ -81,6 +158,10 @@
        {
          "clash_mode": "Global",
          "outbound": "proxy"
+       },
+       {
+         "outbound": "dns-out",
+         "protocol": "dns"
        }
      ]
    }
