@@ -111,7 +111,7 @@
       "password": "#$hotel99#$"
      },
      {
-       "down_mbps": 10,
+       "down_mbps": 30,
        "obfs": {
          "password": "musa123456789",
          "type": "salamander"
@@ -126,10 +126,10 @@
          "server_name": "regxa.com"
        },
        "type": "hysteria2",
-       "up_mbps": 10
+       "up_mbps": 30
      },
      {
-       "down_mbps": 10,
+       "down_mbps": 30,
        "obfs": {
          "password": "musa123456789",
          "type": "salamander"
@@ -144,7 +144,7 @@
          "server_name": "regxa.com"
        },
        "type": "hysteria2",
-       "up_mbps": 10
+       "up_mbps": 30
      }
    ],
    "route": {
