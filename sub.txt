@@ -68,7 +68,7 @@
          "auto",
          "hysteria2-🇩🇪",
          "Trojan-🇩🇪",
-         "SSH-M","SSH-E"
+         "SSH-🇩🇪","SSH-🇷🇸","SSH-🇳🇱","SSH-🇬🇧","SSH-🇬🇧-2","SSH-🇺🇸","SSH-🇧🇷","SSH-🇰🇪"
        ],
        "tag": "proxy",
        "type": "selector"
@@ -78,7 +78,7 @@
        "outbounds": [
          "hysteria2-🇩🇪",
          "Trojan-🇩🇪",
-         "SSH-M","SSH-E"
+         "SSH-🇩🇪","SSH-🇷🇸","SSH-🇳🇱","SSH-🇬🇧","SSH-🇬🇧-2","SSH-🇺🇸","SSH-🇧🇷","SSH-🇰🇪"
        ],
        "tag": "auto",
        "tolerance": 50,
@@ -99,16 +99,58 @@
      },
      {
       "type": "ssh",
-      "tag": "SSH-M",
+      "tag": "SSH-🇩🇪",
       "server": "146.103.40.100",
       "password": "musa"
     },
     {
       "type": "ssh",
-      "tag": "SSH-E",
+      "tag": "SSH-🇷🇸",
       "server": "77.46.153.7",
       "user": "hotel",
       "password": "#$hotel99#$"
+     },
+     {
+      "type": "ssh",
+      "tag": "SSH-🇳🇱",
+      "server": "51.144.235.229",
+      "user": "admin",
+      "password": "kfn60Dbo6knocvo"
+     },
+     {
+      "type": "ssh",
+      "tag": "SSH-🇬🇧",
+      "server": "176.35.177.122",
+      "user": "admin",
+      "password": "Willywonka27"
+     },
+     {
+      "type": "ssh",
+      "tag": "SSH-🇬🇧-2",
+      "server": "88.80.189.149",
+      "user": "admin",
+      "password": "4dmLn"
+     },
+     {
+      "type": "ssh",
+      "tag": "SSH-🇺🇸",
+      "server": "139.144.18.139",
+      "user": "admin",
+      "password": "4dmLn"
+     },
+     {
+      "type": "ssh",
+      "tag": "SSH-🇧🇷",
+      "server": "45.231.89.110",
+      "user": "admin",
+      "password": "08007210179"
+     },
+     {
+      "type": "ssh",
+      "tag": "SSH-🇰🇪",
+      "server": "41.72.197.250",
+      "user": "admin",
+      "password": "support@ltk.K3"
      },
      {
        "down_mbps": 30,
