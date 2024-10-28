@@ -67,7 +67,7 @@
        "outbounds": [
          "auto",
          "hysteria2-🇩🇪",
-         "hysteria2-🇬🇧",
+         "Trojan-🇩🇪",
          "SSH-M","SSH-E"
        ],
        "tag": "proxy",
@@ -77,7 +77,7 @@
        "interval": "10m",
        "outbounds": [
          "hysteria2-🇩🇪",
-         "hysteria2-🇬🇧",
+         "Trojan-🇩🇪",
          "SSH-M","SSH-E"
        ],
        "tag": "auto",
@@ -129,22 +129,24 @@
        "up_mbps": 30
      },
      {
-       "down_mbps": 30,
-       "obfs": {
-         "password": "musa123456789",
-         "type": "salamander"
+       "multiplex": {
+         "enabled": true
        },
        "password": "dAKJ4RsW89",
        "server": "146.103.40.100",
-       "server_port": 58169,
-       "tag": "hysteria2-🇬🇧",
+       "server_port": 8080,
+       "tag": "Trojan-🇩🇪",
        "tls": {
          "enabled": true,
          "insecure": true,
          "server_name": "regxa.com"
        },
-       "type": "hysteria2",
-       "up_mbps": 30
+       "transport": {
+         "early_data_header_name": "Sec-WebSocket-Protocol",
+         "path": "/127/0/0/1",
+         "type": "ws"
+       },
+       "type": "trojan"
      }
    ],
    "route": {
