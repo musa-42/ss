@@ -155,7 +155,7 @@
         "hysteria2-🇩🇪",
         "trojan-🇩🇪",
         "hysteria2-🇩🇪-nolimit",
-         "SSH-🇩🇪","SSH-🇷🇸","SSH-🇳🇱","SSH-🇬🇧","SSH-🇬🇧-2","SSH-🇺🇸","SSH-🇧🇷","SSH-🇰🇪",
+        "SSH-🇩🇪","SSH-🇷🇸","SSH-🇳🇱","SSH-🇬🇧","SSH-🇬🇧-2","SSH-🇺🇸","SSH-🇧🇷","SSH-🇰🇪",
         "1.1🇫🇷",
         "2.2🇫🇷",
         "3.3🇩🇪",
