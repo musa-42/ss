@@ -1,63 +1,42 @@
 {
   "dns": {
-    "final": "local-dns",
-    "rules": [
-      {
-        "clash_mode": "Global",
-        "server": "proxy-dns",
-        "source_ip_cidr": [
-          "172.19.0.0/30"
-        ]
-      },
-      {
-        "server": "proxy-dns",
-        "source_ip_cidr": [
-          "172.19.0.0/30"
-        ]
-      }
-    ],
     "servers": [
       {
+        "tag": "proxy-dns",
         "address": "tcp://8.8.8.8",
         "address_resolver": "local-dns",
-        "detour": "proxy",
-        "tag": "proxy-dns"
+        "detour": "proxy"
       },
       {
+        "tag": "local-dns",
         "address": "local",
-        "detour": "direct",
-        "tag": "local-dns"
+        "detour": "direct"
       },
       {
-        "address": "rcode://success",
-        "tag": "block"
+        "tag": "block",
+        "address": "rcode://success"
       }
     ],
+    "rules": [
+      {
+        "source_ip_cidr": "172.19.0.0/30",
+        "clash_mode": "Global",
+        "server": "proxy-dns"
+      },
+      {
+        "source_ip_cidr": "172.19.0.0/30",
+        "server": "proxy-dns"
+      }
+    ],
+    "final": "local-dns",
     "strategy": "prefer_ipv4"
-  },
-  "experimental": {
-    "cache_file": {
-      "enabled": true,
-      "store_fakeip": false
-    },
-    "clash_api": {
-      "default_mode": "rule",
-      "external_controller": "127.0.0.1:9090",
-      "external_ui": "ui",
-      "external_ui_download_detour": "direct",
-      "external_ui_download_url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip",
-      "secret": ""
-    }
   },
   "inbounds": [
     {
-      "address": [
-        "172.19.0.1/30",
-        "fdfe:dcba:9876::1/126"
-      ],
-      "auto_route": true,
-      "endpoint_independent_nat": false,
+      "type": "tun",
       "mtu": 9000,
+      "auto_route": true,
+      "stack": "system",
       "platform": {
         "http_proxy": {
           "enabled": true,
@@ -66,1296 +45,1636 @@
         }
       },
       "sniff": true,
-      "stack": "system",
-      "strict_route": false,
-      "type": "tun"
+      "inet4_address": "172.19.0.1/30"
     },
     {
+      "type": "mixed",
       "listen": "127.0.0.1",
       "listen_port": 2080,
-      "sniff": true,
-      "type": "mixed",
-      "users": []
+      "sniff": true
     }
   ],
   "outbounds": [
     {
+      "type": "selector",
+      "tag": "proxy",
       "outbounds": [
         "auto",
         "direct",
         "hysteria2-🇩🇪",
         "trojan-🇩🇪",
-        "hysteria2-🇩🇪-nolimit",
-        "SSH-🇩🇪","SSH-🇷🇸","SSH-🇳🇱","SSH-🇬🇧","SSH-🇬🇧-2","SSH-🇺🇸","SSH-🇧🇷","SSH-🇰🇪",
-        "1.1🇫🇷",
-        "2.2🇫🇷",
-        "3.3🇩🇪",
-        "5.5🇫🇷",
-        "6.6🇩🇪",
-        "7.7🇺🇸",
-        "9.9🇨🇦",
-        "10.10🇺🇸",
-        "11.11🇺🇸",
-        "12.12🇫🇷",
-        "13.13🇺🇸",
-        "14.14🇫🇷",
-        "15.15🇺🇸",
-        "16.16🇺🇸",
-        "17.17🇩🇪",
-        "18.18🇫🇷",
-        "19.19🇺🇸",
-        "20.20🇺🇸",
-        "22.22🇬🇧 ✨",
-        "23.23🇵🇱",
-        "24.24🇺🇸",
-        "25.25🇩🇪",
-        "26.26🇺🇸",
-        "27.27🇺🇸",
-        "28.28🇺🇸",
-        "29.29🇫🇷",
-        "30.30🇭🇰 ✨",
-        "31.31🇫🇷",
-        "32.32🇳🇱",
-        "33.33🇺🇸✨",
-        "34.34🇬🇧",
-        "35.35🇺🇸",
-        "36.36🇨🇦✨",
-        "37.37🇦🇹✨",
-        "38.38🇩🇪",
-        "39.39🇬🇧",
-        "40.40🇫🇷",
-        "42.42🇫🇷",
-        "44.44🇬🇧",
-        "45.45🇺🇸",
-        "46.46🇫🇷",
-        "47.47🇺🇸",
-        "48.48🇫🇷",
-        "49.49🇩🇪",
-        "50.50🇩🇪",
-        "51.51🇫🇷",
-        "52.52🇩🇪",
-        "53.53🇺🇸",
-        "54.54🇫🇷",
-        "56.56🇫🇷",
-        "58.58🇺🇸",
-        "59.59🇩🇪",
-        "60.60🇩🇪",
-        "61.61🇸🇪✨",
-        "62.62🇫🇷✨",
-        "63.63🇺🇸",
-        "64.64🇬🇧",
-        "65.65🇫🇷"
-      ],
-      "tag": "proxy",
-      "type": "selector"
+        "hysteria2-",
+        "1🇫🇷 § 3",
+        "2🇫🇷 § 4",
+        "3🇩🇪 § 5",
+        "4🇫🇷 § 6",
+        "5🇫🇷 § 7",
+        "6🇩🇪 § 8",
+        "7🇺🇸 § 9",
+        "8🇫🇷 § 10",
+        "9🇨🇦 § 11",
+        "10🇺🇸 § 12",
+        "11🇺🇸 § 13",
+        "12🇫🇷 § 14",
+        "13🇺🇸 § 15",
+        "14🇫🇷 § 16",
+        "15🇺🇸 § 17",
+        "16🇺🇸 § 18",
+        "17🇩🇪 § 19",
+        "18🇫🇷 § 20",
+        "19🇺🇸 § 21",
+        "20🇺🇸 § 22",
+        "21🇫🇷 § 23",
+        "22🇬🇧 ✨ § 24",
+        "23🇵🇱 § 25",
+        "24🇺🇸 § 26",
+        "25🇩🇪 § 27",
+        "26🇺🇸 § 28",
+        "27🇺🇸 § 29",
+        "28🇺🇸 § 30",
+        "29🇫🇷 § 31",
+        "30🇭🇰 ✨ § 32",
+        "31🇫🇷 § 33",
+        "32🇳🇱 § 34",
+        "33🇺🇸✨ § 35",
+        "34🇬🇧 § 36",
+        "35🇺🇸 § 37",
+        "36🇨🇦✨ § 38",
+        "37🇦🇹✨ § 39",
+        "38🇩🇪 § 40",
+        "39🇬🇧 § 41",
+        "40🇫🇷 § 42",
+        "41🇫🇷✨ § 43",
+        "42🇫🇷 § 44",
+        "43🇺🇸✨ § 45",
+        "44🇬🇧 § 46",
+        "45🇺🇸 § 47",
+        "46🇫🇷 § 48",
+        "47🇺🇸 § 49",
+        "48🇫🇷 § 50",
+        "49🇩🇪 § 51",
+        "50🇩🇪 § 52",
+        "51🇫🇷 § 53",
+        "52🇩🇪 § 54",
+        "53🇺🇸 § 55",
+        "54🇫🇷 § 56",
+        "55🇺🇸✨ § 57",
+        "56🇫🇷 § 58",
+        "57🇺🇸 § 59",
+        "58🇺🇸 § 60",
+        "59🇩🇪 § 61",
+        "60🇩🇪 § 62",
+        "61🇸🇪✨ § 63",
+        "62🇫🇷✨ § 64",
+        "63🇺🇸 § 65",
+        "64🇬🇧 § 66",
+        "65🇫🇷 § 67",
+        "SSH-🇩🇪",
+        "SSH-🇷🇸",
+        "SSH-🇳🇱",
+        "SSH-🇬🇧",
+        "SSH-🇬🇧-2",
+        "SSH-🇺🇸",
+        "SSH-🇧🇷",
+        "SSH-🇰🇪"
+      ]
     },
     {
-      "interval": "10m",
+      "type": "urltest",
+      "tag": "auto",
       "outbounds": [
         "hysteria2-🇩🇪",
         "trojan-🇩🇪",
-        "hysteria2-🇩🇪-nolimit",
-        "SSH-🇩🇪","SSH-🇷🇸","SSH-🇳🇱","SSH-🇬🇧","SSH-🇬🇧-2","SSH-🇺🇸","SSH-🇧🇷","SSH-🇰🇪",
-        "1.1🇫🇷",
-        "2.2🇫🇷",
-        "3.3🇩🇪",
-        "5.5🇫🇷",
-        "6.6🇩🇪",
-        "7.7🇺🇸",
-        "9.9🇨🇦",
-        "10.10🇺🇸",
-        "11.11🇺🇸",
-        "12.12🇫🇷",
-        "13.13🇺🇸",
-        "14.14🇫🇷",
-        "15.15🇺🇸",
-        "16.16🇺🇸",
-        "17.17🇩🇪",
-        "18.18🇫🇷",
-        "19.19🇺🇸",
-        "20.20🇺🇸",
-        "22.22🇬🇧 ✨",
-        "23.23🇵🇱",
-        "24.24🇺🇸",
-        "25.25🇩🇪",
-        "26.26🇺🇸",
-        "27.27🇺🇸",
-        "28.28🇺🇸",
-        "29.29🇫🇷",
-        "30.30🇭🇰 ✨",
-        "31.31🇫🇷",
-        "32.32🇳🇱",
-        "33.33🇺🇸✨",
-        "34.34🇬🇧",
-        "35.35🇺🇸",
-        "36.36🇨🇦✨",
-        "37.37🇦🇹✨",
-        "38.38🇩🇪",
-        "39.39🇬🇧",
-        "40.40🇫🇷",
-        "42.42🇫🇷",
-        "44.44🇬🇧",
-        "45.45🇺🇸",
-        "46.46🇫🇷",
-        "47.47🇺🇸",
-        "48.48🇫🇷",
-        "49.49🇩🇪",
-        "50.50🇩🇪",
-        "51.51🇫🇷",
-        "52.52🇩🇪",
-        "53.53🇺🇸",
-        "54.54🇫🇷",
-        "56.56🇫🇷",
-        "58.58🇺🇸",
-        "59.59🇩🇪",
-        "60.60🇩🇪",
-        "61.61🇸🇪✨",
-        "62.62🇫🇷✨",
-        "63.63🇺🇸",
-        "64.64🇬🇧",
-        "65.65🇫🇷"
+        "hysteria2-",
+        "1🇫🇷 § 3",
+        "2🇫🇷 § 4",
+        "3🇩🇪 § 5",
+        "4🇫🇷 § 6",
+        "5🇫🇷 § 7",
+        "6🇩🇪 § 8",
+        "7🇺🇸 § 9",
+        "8🇫🇷 § 10",
+        "9🇨🇦 § 11",
+        "10🇺🇸 § 12",
+        "11🇺🇸 § 13",
+        "12🇫🇷 § 14",
+        "13🇺🇸 § 15",
+        "14🇫🇷 § 16",
+        "15🇺🇸 § 17",
+        "16🇺🇸 § 18",
+        "17🇩🇪 § 19",
+        "18🇫🇷 § 20",
+        "19🇺🇸 § 21",
+        "20🇺🇸 § 22",
+        "21🇫🇷 § 23",
+        "22🇬🇧 ✨ § 24",
+        "23🇵🇱 § 25",
+        "24🇺🇸 § 26",
+        "25🇩🇪 § 27",
+        "26🇺🇸 § 28",
+        "27🇺🇸 § 29",
+        "28🇺🇸 § 30",
+        "29🇫🇷 § 31",
+        "30🇭🇰 ✨ § 32",
+        "31🇫🇷 § 33",
+        "32🇳🇱 § 34",
+        "33🇺🇸✨ § 35",
+        "34🇬🇧 § 36",
+        "35🇺🇸 § 37",
+        "36🇨🇦✨ § 38",
+        "37🇦🇹✨ § 39",
+        "38🇩🇪 § 40",
+        "39🇬🇧 § 41",
+        "40🇫🇷 § 42",
+        "41🇫🇷✨ § 43",
+        "42🇫🇷 § 44",
+        "43🇺🇸✨ § 45",
+        "44🇬🇧 § 46",
+        "45🇺🇸 § 47",
+        "46🇫🇷 § 48",
+        "47🇺🇸 § 49",
+        "48🇫🇷 § 50",
+        "49🇩🇪 § 51",
+        "50🇩🇪 § 52",
+        "51🇫🇷 § 53",
+        "52🇩🇪 § 54",
+        "53🇺🇸 § 55",
+        "54🇫🇷 § 56",
+        "55🇺🇸✨ § 57",
+        "56🇫🇷 § 58",
+        "57🇺🇸 § 59",
+        "58🇺🇸 § 60",
+        "59🇩🇪 § 61",
+        "60🇩🇪 § 62",
+        "61🇸🇪✨ § 63",
+        "62🇫🇷✨ § 64",
+        "63🇺🇸 § 65",
+        "64🇬🇧 § 66",
+        "65🇫🇷 § 67",
+        "SSH-🇩🇪",
+        "SSH-🇷🇸",
+        "SSH-🇳🇱",
+        "SSH-🇬🇧",
+        "SSH-🇬🇧-2",
+        "SSH-🇺🇸",
+        "SSH-🇧🇷",
+        "SSH-🇰🇪"
       ],
-      "tag": "auto",
-      "tolerance": 50,
-      "type": "urltest",
-      "url": "http://www.gstatic.com/generate_204"
+      "url": "http://www.gstatic.com/generate_204",
+      "interval": "10m0s",
+      "tolerance": 50
     },
     {
-      "tag": "direct",
-      "type": "direct"
+      "type": "direct",
+      "tag": "direct"
     },
     {
-      "tag": "dns-out",
-      "type": "dns"
+      "type": "dns",
+      "tag": "dns-out"
     },
     {
-      "tag": "block",
-      "type": "block"
+      "type": "block",
+      "tag": "block"
     },
     {
       "type": "ssh",
       "tag": "SSH-🇩🇪",
       "server": "146.103.40.100",
+      "server_port": 0,
       "password": "musa"
     },
     {
       "type": "ssh",
       "tag": "SSH-🇷🇸",
       "server": "77.46.153.7",
+      "server_port": 0,
       "user": "hotel",
       "password": "#$hotel99#$"
-     },
-     {
+    },
+    {
       "type": "ssh",
       "tag": "SSH-🇳🇱",
       "server": "51.144.235.229",
+      "server_port": 0,
       "user": "admin",
       "password": "kfn60Dbo6knocvo"
-     },
-     {
+    },
+    {
       "type": "ssh",
       "tag": "SSH-🇬🇧",
       "server": "176.35.177.122",
+      "server_port": 0,
       "user": "admin",
       "password": "Willywonka27"
-     },
-     {
+    },
+    {
       "type": "ssh",
       "tag": "SSH-🇬🇧-2",
       "server": "88.80.189.149",
+      "server_port": 0,
       "user": "admin",
       "password": "4dmLn"
-     },
-     {
+    },
+    {
       "type": "ssh",
       "tag": "SSH-🇺🇸",
       "server": "139.144.18.139",
+      "server_port": 0,
       "user": "admin",
       "password": "4dmLn"
-     },
-     {
+    },
+    {
       "type": "ssh",
       "tag": "SSH-🇧🇷",
       "server": "45.231.89.110",
+      "server_port": 0,
       "user": "admin",
       "password": "08007210179"
-     },
-     {
+    },
+    {
       "type": "ssh",
       "tag": "SSH-🇰🇪",
       "server": "41.72.197.250",
+      "server_port": 0,
       "user": "admin",
       "password": "support@ltk.K3"
-     },
+    },
     {
-      "down_mbps": 30,
-      "obfs": {
-        "password": "musa123456789",
-        "type": "salamander"
-      },
-      "password": "dAKJ4RsW89",
+      "type": "hysteria2",
+      "tag": "hysteria2-🇩🇪",
       "server": "146.103.40.100",
       "server_port": 443,
-      "tag": "hysteria2-🇩🇪",
-      "tls": {
-        "enabled": true,
-        "insecure": true,
-        "server_name": "regxa.com"
-      },
-      "type": "hysteria2",
-      "up_mbps": 30
-    },
-    {
-      "multiplex": {
-        "enabled": true
+      "obfs": {
+        "type": "salamander",
+        "password": "musa123456789"
       },
       "password": "dAKJ4RsW89",
+      "tls": {
+        "enabled": true,
+        "server_name": "regxa.com",
+        "insecure": true
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "trojan-🇩🇪",
       "server": "146.103.40.100",
       "server_port": 8080,
-      "tag": "trojan-🇩🇪",
+      "password": "dAKJ4RsW89",
       "tls": {
         "enabled": true,
+        "server_name": "regxa.com",
         "insecure": true,
-        "server_name": "regxa.com"
+        "utls": {
+          "enabled": true
+        }
       },
       "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "type": "ws",
         "path": "/127/0/0/1",
-        "type": "ws"
-      },
-      "type": "trojan"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "obfs": {
-        "password": "000000000000",
-        "type": "salamander"
-      },
-      "password": "dAKJ4RsW89",
+      "type": "hysteria2",
+      "tag": "hysteria2-",
       "server": "146.103.40.100",
       "server_port": 3389,
-      "tag": "hysteria2-🇩🇪-nolimit",
+      "obfs": {
+        "type": "salamander",
+        "password": "000000000000"
+      },
+      "password": "dAKJ4RsW89",
       "tls": {
         "enabled": true
-      },
-      "type": "hysteria2"
+      }
     },
     {
-      "alter_id": 0,
-      "security": "auto",
+      "type": "vmess",
+      "tag": "1🇫🇷 § 3",
       "server": "188.114.97.3",
-      "server_port": "443",
-      "tag": "1.1🇫🇷",
+      "server_port": 443,
+      "uuid": "f584de15-2034-4170-a723-f48c2bae5e0f",
+      "security": "auto",
+      "authenticated_length": true,
       "tls": {
         "enabled": true,
-        "server_name": "afrhms16v.bestxray.buzz"
+        "server_name": "afrhms16v.bestxray.buzz",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true
+        }
       },
+      "packet_encoding": "xudp",
       "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "type": "ws",
+        "path": "/linkws",
         "headers": {
           "Host": "afrhms16v.bestxray.buzz"
         },
-        "path": "/linkws",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "f584de15-2034-4170-a723-f48c2bae5e0f"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "alter_id": 0,
-      "security": "auto",
+      "type": "vmess",
+      "tag": "2🇫🇷 § 4",
       "server": "188.114.96.6",
-      "server_port": "443",
-      "tag": "2.2🇫🇷",
+      "server_port": 443,
+      "uuid": "f584de15-2034-4170-a723-f48c2bae5e0f",
+      "security": "auto",
+      "authenticated_length": true,
       "tls": {
         "enabled": true,
-        "server_name": "afrhms16v.bestxray.buzz"
+        "server_name": "afrhms16v.bestxray.buzz",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true
+        }
       },
+      "packet_encoding": "xudp",
       "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "type": "ws",
+        "path": "/linkws",
         "headers": {
           "Host": "afrhms16v.bestxray.buzz"
         },
-        "path": "/linkws",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "f584de15-2034-4170-a723-f48c2bae5e0f"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "alter_id": 0,
-      "security": "auto",
+      "type": "vmess",
+      "tag": "3🇩🇪 § 5",
       "server": "104.21.55.234",
-      "server_port": "443",
-      "tag": "3.3🇩🇪",
+      "server_port": 443,
+      "uuid": "bc864078-dcf3-4bf4-8dbf-ca9f200b56be",
+      "security": "auto",
+      "authenticated_length": true,
       "tls": {
         "enabled": true,
-        "server_name": "gwdef.sbs"
+        "server_name": "gwdef.sbs",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true
+        }
       },
+      "packet_encoding": "xudp",
       "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "type": "ws",
+        "path": "/linkws",
         "headers": {
           "Host": "gwdef.sbs"
         },
-        "path": "/linkws",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "bc864078-dcf3-4bf4-8dbf-ca9f200b56be"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "alter_id": 0,
+      "type": "vmess",
+      "tag": "4🇫🇷 § 6",
+      "server": "s1c.v2.v001sss.xyz",
+      "server_port": 2082,
+      "uuid": "112ac36f-3f53-4e26-8371-d25c028e1b9a",
       "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "5🇫🇷 § 7",
       "server": "104.21.31.62",
-      "server_port": "443",
-      "tag": "5.5🇫🇷",
+      "server_port": 443,
+      "uuid": "05641cf5-58d2-4ba4-a9f1-b3cda0b1fb1d",
+      "security": "auto",
+      "authenticated_length": true,
       "tls": {
         "enabled": true,
-        "server_name": "obdii.cfd"
+        "server_name": "obdii.cfd",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true
+        }
       },
+      "packet_encoding": "xudp",
       "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "type": "ws",
+        "path": "/linkws",
         "headers": {
           "Host": "obdii.cfd"
         },
-        "path": "/linkws",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "05641cf5-58d2-4ba4-a9f1-b3cda0b1fb1d"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "alter_id": 0,
-      "security": "auto",
+      "type": "vmess",
+      "tag": "6🇩🇪 § 8",
       "server": "104.21.24.170",
-      "server_port": "443",
-      "tag": "6.6🇩🇪",
+      "server_port": 443,
+      "uuid": "b321fd5d-e6ec-4293-a644-164e3885f52e",
+      "security": "auto",
+      "authenticated_length": true,
       "tls": {
         "enabled": true,
-        "server_name": "adenc36v.xtooltech.cfd"
+        "server_name": "adenc36v.xtooltech.cfd",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true
+        }
       },
+      "packet_encoding": "xudp",
       "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "type": "ws",
+        "path": "/linkws",
         "headers": {
           "Host": "adenc36v.xtooltech.cfd"
         },
-        "path": "/linkws",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "b321fd5d-e6ec-4293-a644-164e3885f52e"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "alter_id": 0,
-      "security": "auto",
+      "type": "vmess",
+      "tag": "7🇺🇸 § 9",
       "server": "lin0502.hwcar.sbs",
-      "server_port": "443",
-      "tag": "7.7🇺🇸",
+      "server_port": 443,
+      "uuid": "39cec18f-a439-427c-9a4e-aeb6fcdf6f53",
+      "security": "auto",
+      "authenticated_length": true,
       "tls": {
         "enabled": true,
-        "server_name": "linja05.hwcar.sbs"
+        "server_name": "linja05.hwcar.sbs",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true
+        }
       },
+      "packet_encoding": "xudp",
       "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "type": "ws",
+        "path": "/linkws",
         "headers": {
           "Host": "linja05.hwcar.sbs"
         },
-        "path": "/linkws",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "39cec18f-a439-427c-9a4e-aeb6fcdf6f53"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "password": "e8105dfd24414268b6c7652c63731097",
-      "server": "198.41.220.20",
+      "type": "vmess",
+      "tag": "8🇫🇷 § 10",
+      "server": "172.67.138.140",
       "server_port": 443,
-      "tag": "9.9🇨🇦",
+      "uuid": "441da342-ce90-441e-bff9-d2ceb55e68ca",
+      "security": "auto",
+      "authenticated_length": true,
       "tls": {
         "enabled": true,
+        "server_name": "ivideos.sbs",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/linkws",
+        "headers": {
+          "Host": "ivideos.sbs"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "9🇨🇦 § 11",
+      "server": "198.41.220.20",
+      "server_port": 443,
+      "password": "e8105dfd24414268b6c7652c63731097",
+      "tls": {
+        "enabled": true,
+        "server_name": "avianrecruit.com",
         "insecure": true,
-        "server_name": "avianrecruit.com"
+        "utls": {
+          "enabled": true
+        }
       },
       "transport": {
+        "type": "ws",
+        "path": "/6b777a91",
         "headers": {
           "Host": "avianrecruit.com"
         },
-        "path": "/6b777a91",
-        "type": "ws"
-      },
-      "type": "trojan"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "password": "984e400bf5d541b7b0815913fe0c432a",
+      "type": "trojan",
+      "tag": "10🇺🇸 § 12",
       "server": "104.19.171.7",
       "server_port": 443,
-      "tag": "10.10🇺🇸",
+      "password": "984e400bf5d541b7b0815913fe0c432a",
       "tls": {
         "enabled": true,
+        "server_name": "jobscareerforstudent.com",
         "insecure": true,
-        "server_name": "jobscareerforstudent.com"
+        "utls": {
+          "enabled": true
+        }
       },
       "transport": {
+        "type": "ws",
+        "path": "/6b777a91",
         "headers": {
           "Host": "jobscareerforstudent.com"
         },
-        "path": "/6b777a91",
-        "type": "ws"
-      },
-      "type": "trojan"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "alter_id": 0,
-      "security": "auto",
+      "type": "vmess",
+      "tag": "11🇺🇸 § 13",
       "server": "104.21.74.239",
-      "server_port": "443",
-      "tag": "11.11🇺🇸",
+      "server_port": 443,
+      "uuid": "a1655f51-1e20-4a92-8a11-b7ca30a7a353",
+      "security": "auto",
+      "authenticated_length": true,
       "tls": {
         "enabled": true,
-        "server_name": "afrhms07.xfixedfloat.cfd"
+        "server_name": "afrhms07.xfixedfloat.cfd",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true
+        }
       },
+      "packet_encoding": "xudp",
       "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "type": "ws",
+        "path": "/linkws",
         "headers": {
           "Host": "afrhms07.xfixedfloat.cfd"
         },
-        "path": "/linkws",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "a1655f51-1e20-4a92-8a11-b7ca30a7a353"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "alter_id": 0,
-      "security": "auto",
+      "type": "vmess",
+      "tag": "12🇫🇷 § 14",
       "server": "upload.ir",
-      "server_port": "443",
-      "tag": "12.12🇫🇷",
+      "server_port": 443,
+      "uuid": "f584de15-2034-4170-a723-f48c2bae5e0f",
+      "security": "auto",
+      "authenticated_length": true,
       "tls": {
         "enabled": true,
-        "server_name": "afrhms16v.bestxray.buzz"
+        "server_name": "afrhms16v.bestxray.buzz",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true
+        }
       },
+      "packet_encoding": "xudp",
       "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "type": "ws",
+        "path": "/linkws",
         "headers": {
           "Host": "afrhms16v.bestxray.buzz"
         },
-        "path": "/linkws",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "f584de15-2034-4170-a723-f48c2bae5e0f"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "alter_id": 0,
-      "security": "auto",
+      "type": "vmess",
+      "tag": "13🇺🇸 § 15",
       "server": "50.114.243.61",
-      "server_port": "43834",
-      "tag": "13.13🇺🇸",
-      "tls": {},
-      "transport": {},
-      "type": "vmess",
-      "uuid": "b246e34d-bbd1-4016-8f74-ea461c37e411"
+      "server_port": 43834,
+      "uuid": "b246e34d-bbd1-4016-8f74-ea461c37e411",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
     },
     {
-      "alter_id": 0,
-      "security": "auto",
+      "type": "vmess",
+      "tag": "14🇫🇷 § 16",
       "server": "188.114.96.5",
-      "server_port": "443",
-      "tag": "14.14🇫🇷",
+      "server_port": 443,
+      "uuid": "edbb1059-1633-4271-b66e-ed4fba47a1bf",
+      "security": "auto",
+      "authenticated_length": true,
       "tls": {
         "enabled": true,
-        "server_name": "linde06.indiavideo.sbs"
+        "server_name": "linde06.indiavideo.sbs",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true
+        }
       },
+      "packet_encoding": "xudp",
       "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "type": "ws",
+        "path": "/linkws",
         "headers": {
           "Host": "linde06.indiavideo.sbs"
         },
-        "path": "/linkws",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "edbb1059-1633-4271-b66e-ed4fba47a1bf"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "alter_id": 0,
-      "security": "auto",
+      "type": "vmess",
+      "tag": "15🇺🇸 § 17",
       "server": "50.114.243.61",
-      "server_port": "43834",
-      "tag": "15.15🇺🇸",
-      "tls": {},
-      "transport": {},
-      "type": "vmess",
-      "uuid": "b246e34d-bbd1-4016-8f74-ea461c37e411"
+      "server_port": 43834,
+      "uuid": "b246e34d-bbd1-4016-8f74-ea461c37e411",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
     },
     {
-      "password": "2cba4104747d49d18319e5ade1b93ab5",
+      "type": "trojan",
+      "tag": "16🇺🇸 § 18",
       "server": "w3.org",
       "server_port": 443,
-      "tag": "16.16🇺🇸",
+      "password": "2cba4104747d49d18319e5ade1b93ab5",
       "tls": {
         "enabled": true,
+        "server_name": "jobscareerforstudent.com",
         "insecure": true,
-        "server_name": "jobscareerforstudent.com"
+        "utls": {
+          "enabled": true
+        }
       },
       "transport": {
+        "type": "ws",
+        "path": "/6b777a91",
         "headers": {
           "Host": "jobscareerforstudent.com"
         },
-        "path": "/6b777a91",
-        "type": "ws"
-      },
-      "type": "trojan"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "alter_id": 0,
-      "security": "auto",
+      "type": "vmess",
+      "tag": "17🇩🇪 § 19",
       "server": "hms02opi.fxiaomi.sbs",
-      "server_port": "443",
-      "tag": "17.17🇩🇪",
+      "server_port": 443,
+      "uuid": "6c168fcc-2231-4f3b-8c1e-f6391692df4a",
+      "security": "auto",
+      "authenticated_length": true,
       "tls": {
         "enabled": true,
-        "server_name": "hms02.fxiaomi.sbs"
+        "server_name": "hms02.fxiaomi.sbs",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true
+        }
       },
+      "packet_encoding": "xudp",
       "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "type": "ws",
+        "path": "/link",
         "headers": {
           "Host": "hms02.fxiaomi.sbs"
         },
-        "path": "/link",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "6c168fcc-2231-4f3b-8c1e-f6391692df4a"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "alter_id": 0,
-      "security": "auto",
+      "type": "vmess",
+      "tag": "18🇫🇷 § 20",
       "server": "afrhms16v.bestxray.buzz",
-      "server_port": "443",
-      "tag": "18.18🇫🇷",
+      "server_port": 443,
+      "uuid": "f584de15-2034-4170-a723-f48c2bae5e0f",
+      "security": "auto",
+      "authenticated_length": true,
       "tls": {
         "enabled": true,
-        "server_name": "afrhms16v.bestxray.buzz"
+        "server_name": "afrhms16v.bestxray.buzz",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true
+        }
       },
+      "packet_encoding": "xudp",
       "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "type": "ws",
+        "path": "/linkws",
         "headers": {
           "Host": "afrhms16v.bestxray.buzz"
         },
-        "path": "/linkws",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "f584de15-2034-4170-a723-f48c2bae5e0f"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "password": "e8105dfd24414268b6c7652c63731097",
+      "type": "trojan",
+      "tag": "19🇺🇸 § 21",
       "server": "104.16.192.155",
       "server_port": 443,
-      "tag": "19.19🇺🇸",
+      "password": "e8105dfd24414268b6c7652c63731097",
       "tls": {
         "enabled": true,
+        "server_name": "jobscareerfortoday.com",
         "insecure": true,
-        "server_name": "jobscareerfortoday.com"
+        "utls": {
+          "enabled": true
+        }
       },
       "transport": {
+        "type": "ws",
+        "path": "/6b777a91",
         "headers": {
           "Host": "jobscareerfortoday.com"
         },
-        "path": "/6b777a91",
-        "type": "ws"
-      },
-      "type": "trojan"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "alter_id": 0,
-      "security": "auto",
-      "server": "108.181.200.220",
-      "server_port": "50613",
-      "tag": "20.20🇺🇸",
-      "tls": {},
-      "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
-        "path": "/",
-        "type": "ws"
-      },
       "type": "vmess",
-      "uuid": "09e81eaa-d298-432c-e7b6-17add32d14fc"
+      "tag": "20🇺🇸 § 22",
+      "server": "108.181.200.220",
+      "server_port": 50613,
+      "uuid": "09e81eaa-d298-432c-e7b6-17add32d14fc",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "method": "chacha20-ietf-poly1305",
-      "password": "mps3FwmDjLrWaOVg",
-      "server": "series-a2.varzesh360.co",
+      "type": "vmess",
+      "tag": "21🇫🇷 § 23",
+      "server": "172.67.196.112",
       "server_port": 443,
-      "tag": "22.22🇬🇧 ✨",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "4Zwn5rmrUddm1PcGThN114",
-      "server": "77.83.246.74",
-      "server_port": 33320,
-      "tag": "23.23🇵🇱",
-      "type": "shadowsocks"
-    },
-    {
-      "password": "dba20dcb635e430fa4d3bfc303a149d2",
-      "server": "190.93.246.247",
-      "server_port": 443,
-      "tag": "24.24🇺🇸",
+      "uuid": "edbb1059-1633-4271-b66e-ed4fba47a1bf",
+      "security": "auto",
+      "authenticated_length": true,
       "tls": {
         "enabled": true,
+        "server_name": "linde06.indiavideo.sbs",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/linkws",
+        "headers": {
+          "Host": "linde06.indiavideo.sbs"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "22🇬🇧 ✨ § 24",
+      "server": "series-a2.varzesh360.co",
+      "server_port": 443,
+      "method": "chacha20-ietf-poly1305",
+      "password": "mps3FwmDjLrWaOVg"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "23🇵🇱 § 25",
+      "server": "77.83.246.74",
+      "server_port": 33320,
+      "method": "chacha20-ietf-poly1305",
+      "password": "4Zwn5rmrUddm1PcGThN114"
+    },
+    {
+      "type": "trojan",
+      "tag": "24🇺🇸 § 26",
+      "server": "190.93.246.247",
+      "server_port": 443,
+      "password": "dba20dcb635e430fa4d3bfc303a149d2",
+      "tls": {
+        "enabled": true,
+        "server_name": "jobscareerforlawyers.com",
         "insecure": true,
-        "server_name": "jobscareerforlawyers.com"
+        "utls": {
+          "enabled": true
+        }
       },
       "transport": {
+        "type": "ws",
+        "path": "/6b777a91",
         "headers": {
           "Host": "jobscareerforlawyers.com"
         },
-        "path": "/6b777a91",
-        "type": "ws"
-      },
-      "type": "trojan"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "alter_id": 0,
-      "security": "auto",
+      "type": "vmess",
+      "tag": "25🇩🇪 § 27",
       "server": "denc36.xtooltech.cfd",
-      "server_port": "443",
-      "tag": "25.25🇩🇪",
+      "server_port": 443,
+      "uuid": "b321fd5d-e6ec-4293-a644-164e3885f52e",
+      "security": "auto",
+      "authenticated_length": true,
       "tls": {
         "enabled": true,
-        "server_name": "adenc36v.xtooltech.cfd"
+        "server_name": "adenc36v.xtooltech.cfd",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true
+        }
       },
+      "packet_encoding": "xudp",
       "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "type": "ws",
+        "path": "/linkws",
         "headers": {
           "Host": "adenc36v.xtooltech.cfd"
         },
-        "path": "/linkws",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "b321fd5d-e6ec-4293-a644-164e3885f52e"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "alter_id": 0,
-      "security": "auto",
+      "type": "vmess",
+      "tag": "26🇺🇸 § 28",
       "server": "172.67.164.164",
-      "server_port": "443",
-      "tag": "26.26🇺🇸",
+      "server_port": 443,
+      "uuid": "a1655f51-1e20-4a92-8a11-b7ca30a7a353",
+      "security": "auto",
+      "authenticated_length": true,
       "tls": {
         "enabled": true,
-        "server_name": "afrhms07.xfixedfloat.cfd"
+        "server_name": "afrhms07.xfixedfloat.cfd",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true
+        }
       },
+      "packet_encoding": "xudp",
       "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "type": "ws",
+        "path": "/linkws",
         "headers": {
           "Host": "afrhms07.xfixedfloat.cfd"
         },
-        "path": "/linkws",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "a1655f51-1e20-4a92-8a11-b7ca30a7a353"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "password": "242a3d8eee5e4ed1a6bfa4141d549a25",
+      "type": "trojan",
+      "tag": "27🇺🇸 § 29",
       "server": "198.41.220.2",
       "server_port": 443,
-      "tag": "27.27🇺🇸",
+      "password": "242a3d8eee5e4ed1a6bfa4141d549a25",
       "tls": {
         "enabled": true,
+        "server_name": "jobscareerfortoday.com",
         "insecure": true,
-        "server_name": "jobscareerfortoday.com"
+        "utls": {
+          "enabled": true
+        }
       },
       "transport": {
+        "type": "ws",
+        "path": "/6b777a91",
         "headers": {
           "Host": "jobscareerfortoday.com"
         },
-        "path": "/6b777a91",
-        "type": "ws"
-      },
-      "type": "trojan"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "password": "669d0ac7b5b64ebbb1abb75d5d540a5c",
+      "type": "trojan",
+      "tag": "28🇺🇸 § 30",
       "server": "104.17.215.2",
       "server_port": 443,
-      "tag": "28.28🇺🇸",
+      "password": "669d0ac7b5b64ebbb1abb75d5d540a5c",
       "tls": {
         "enabled": true,
+        "server_name": "jobscareerforstudent.com",
         "insecure": true,
-        "server_name": "jobscareerforstudent.com"
+        "utls": {
+          "enabled": true
+        }
       },
       "transport": {
+        "type": "ws",
+        "path": "/6b777a91",
         "headers": {
           "Host": "jobscareerforstudent.com"
         },
-        "path": "/6b777a91",
-        "type": "ws"
-      },
-      "type": "trojan"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "alter_id": 0,
-      "security": "auto",
+      "type": "vmess",
+      "tag": "29🇫🇷 § 31",
       "server": "linde06.indiavideo.sbs",
-      "server_port": "443",
-      "tag": "29.29🇫🇷",
+      "server_port": 443,
+      "uuid": "edbb1059-1633-4271-b66e-ed4fba47a1bf",
+      "security": "auto",
+      "authenticated_length": true,
       "tls": {
         "enabled": true,
-        "server_name": "linde06.indiavideo.sbs"
+        "server_name": "linde06.indiavideo.sbs",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true
+        }
       },
+      "packet_encoding": "xudp",
       "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "type": "ws",
+        "path": "/linkws",
         "headers": {
           "Host": "linde06.indiavideo.sbs"
         },
-        "path": "/linkws",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "edbb1059-1633-4271-b66e-ed4fba47a1bf"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "alter_id": 0,
-      "security": "auto",
+      "type": "vmess",
+      "tag": "30🇭🇰 ✨ § 32",
       "server": "103.85.25.134",
-      "server_port": "55218",
-      "tag": "30.30🇭🇰 ✨",
-      "tls": {},
-      "transport": {},
-      "type": "vmess",
-      "uuid": "3827a5c8-c031-46cf-848d-e890d0ead803"
+      "server_port": 55218,
+      "uuid": "3827a5c8-c031-46cf-848d-e890d0ead803",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
     },
     {
-      "alter_id": 0,
-      "security": "auto",
+      "type": "vmess",
+      "tag": "31🇫🇷 § 33",
       "server": "188.114.97.3",
-      "server_port": "443",
-      "tag": "31.31🇫🇷",
+      "server_port": 443,
+      "uuid": "edbb1059-1633-4271-b66e-ed4fba47a1bf",
+      "security": "auto",
+      "authenticated_length": true,
       "tls": {
         "enabled": true,
-        "server_name": "linde06.indiavideo.sbs"
+        "server_name": "linde06.indiavideo.sbs",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true
+        }
       },
+      "packet_encoding": "xudp",
       "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "type": "ws",
+        "path": "/linkws",
         "headers": {
           "Host": "linde06.indiavideo.sbs"
         },
-        "path": "/linkws",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "edbb1059-1633-4271-b66e-ed4fba47a1bf"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "alter_id": 0,
-      "security": "auto",
+      "type": "vmess",
+      "tag": "32🇳🇱 § 34",
       "server": "104.18.220.84",
-      "server_port": "443",
-      "tag": "32.32🇳🇱",
+      "server_port": 443,
+      "uuid": "a6292090-afe1-4640-97a7-4f1d1d877cf1",
+      "security": "chacha20-poly1305",
+      "authenticated_length": true,
       "tls": {
         "enabled": true,
-        "server_name": "hdfy8c1.cpionline.co"
+        "server_name": "hdfy8c1.cpionline.co",
+        "alpn": "h2",
+        "utls": {
+          "enabled": true
+        }
       },
+      "packet_encoding": "xudp",
       "transport": {
+        "type": "grpc",
         "service_name": "Av8czorIlYC5KffvrsN6rqb",
-        "type": "grpc"
-      },
-      "type": "vmess",
-      "uuid": "a6292090-afe1-4640-97a7-4f1d1d877cf1"
+        "idle_timeout": "15s",
+        "ping_timeout": "15s"
+      }
     },
     {
-      "alter_id": 0,
-      "security": "auto",
+      "type": "vmess",
+      "tag": "33🇺🇸✨ § 35",
       "server": "108.181.200.220",
-      "server_port": "17163",
-      "tag": "33.33🇺🇸✨",
-      "tls": {},
-      "transport": {},
-      "type": "vmess",
-      "uuid": "d54814a1-7a93-45f8-9117-db317a25d100"
+      "server_port": 17163,
+      "uuid": "d54814a1-7a93-45f8-9117-db317a25d100",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
     },
     {
-      "method": "chacha20-ietf-poly1305",
-      "password": "mps3FwmDjLrWaOVg",
+      "type": "shadowsocks",
+      "tag": "34🇬🇧 § 36",
       "server": "series-a2.samanehha.co",
       "server_port": 443,
-      "tag": "34.34🇬🇧",
-      "type": "shadowsocks"
+      "method": "chacha20-ietf-poly1305",
+      "password": "mps3FwmDjLrWaOVg"
     },
     {
-      "password": "2e3562a819634de686ade78e434c0963",
+      "type": "trojan",
+      "tag": "35🇺🇸 § 37",
       "server": "104.17.147.5",
       "server_port": 443,
-      "tag": "35.35🇺🇸",
+      "password": "2e3562a819634de686ade78e434c0963",
       "tls": {
         "enabled": true,
+        "server_name": "jobscareertoday.com",
         "insecure": true,
-        "server_name": "jobscareertoday.com"
+        "utls": {
+          "enabled": true
+        }
       },
       "transport": {
+        "type": "ws",
+        "path": "/6b777a91",
         "headers": {
           "Host": "jobscareertoday.com"
         },
-        "path": "/6b777a91",
-        "type": "ws"
-      },
-      "type": "trojan"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "method": "chacha20-ietf-poly1305",
-      "password": "JIhN6rBKkaEboLNXVSv5rq",
+      "type": "shadowsocks",
+      "tag": "36🇨🇦✨ § 38",
       "server": "142.4.216.225",
       "server_port": 80,
-      "tag": "36.36🇨🇦✨",
-      "type": "shadowsocks"
+      "method": "chacha20-ietf-poly1305",
+      "password": "JIhN6rBKkaEboLNXVSv5rq"
     },
     {
-      "method": "chacha20-ietf-poly1305",
-      "password": "ug4Fu79SEREdFGlt2sUyT4",
+      "type": "shadowsocks",
+      "tag": "37🇦🇹✨ § 39",
       "server": "shadowsocks.ctsubvpn.ggff.net",
       "server_port": 2927,
-      "tag": "37.37🇦🇹✨",
-      "type": "shadowsocks"
+      "method": "chacha20-ietf-poly1305",
+      "password": "ug4Fu79SEREdFGlt2sUyT4"
     },
     {
-      "alter_id": 0,
-      "security": "auto",
+      "type": "vmess",
+      "tag": "38🇩🇪 § 40",
       "server": "104.21.83.115",
-      "server_port": "443",
-      "tag": "38.38🇩🇪",
+      "server_port": 443,
+      "uuid": "6c168fcc-2231-4f3b-8c1e-f6391692df4a",
+      "security": "auto",
+      "authenticated_length": true,
       "tls": {
         "enabled": true,
-        "server_name": "hms02.fxiaomi.sbs"
+        "server_name": "hms02.fxiaomi.sbs",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true
+        }
       },
+      "packet_encoding": "xudp",
       "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "type": "ws",
+        "path": "/link",
         "headers": {
           "Host": "hms02.fxiaomi.sbs"
         },
-        "path": "/link",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "6c168fcc-2231-4f3b-8c1e-f6391692df4a"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "password": "669d0ac7b5b64ebbb1abb75d5d540a5c",
+      "type": "trojan",
+      "tag": "39🇬🇧 § 41",
       "server": "104.16.159.6",
       "server_port": 443,
-      "tag": "39.39🇬🇧",
+      "password": "669d0ac7b5b64ebbb1abb75d5d540a5c",
       "tls": {
         "enabled": true,
+        "server_name": "bangladeshipatri.com",
         "insecure": true,
-        "server_name": "bangladeshipatri.com"
+        "utls": {
+          "enabled": true
+        }
       },
       "transport": {
+        "type": "ws",
+        "path": "/6b777a91",
         "headers": {
           "Host": "bangladeshipatri.com"
         },
-        "path": "/6b777a91",
-        "type": "ws"
-      },
-      "type": "trojan"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "alter_id": 0,
-      "security": "auto",
+      "type": "vmess",
+      "tag": "40🇫🇷 § 42",
       "server": "188.114.96.3",
-      "server_port": "443",
-      "tag": "40.40🇫🇷",
+      "server_port": 443,
+      "uuid": "edbb1059-1633-4271-b66e-ed4fba47a1bf",
+      "security": "auto",
+      "authenticated_length": true,
       "tls": {
         "enabled": true,
-        "server_name": "linde06.indiavideo.sbs"
+        "server_name": "linde06.indiavideo.sbs",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true
+        }
       },
+      "packet_encoding": "xudp",
       "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "type": "ws",
+        "path": "/linkws",
         "headers": {
           "Host": "linde06.indiavideo.sbs"
         },
-        "path": "/linkws",
-        "type": "ws"
-      },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
       "type": "vmess",
-      "uuid": "edbb1059-1633-4271-b66e-ed4fba47a1bf"
-    },
-    {
-      "alter_id": 0,
+      "tag": "41🇫🇷✨ § 43",
+      "server": "172.67.130.140",
+      "server_port": 2082,
+      "uuid": "112ac36f-3f53-4e26-8371-d25c028e1b9a",
       "security": "auto",
-      "server": "188.114.96.1",
-      "server_port": "443",
-      "tag": "42.42🇫🇷",
-      "tls": {
-        "enabled": true,
-        "server_name": "afrhms16v.bestxray.buzz"
-      },
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
       "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
-        "headers": {
-          "Host": "afrhms16v.bestxray.buzz"
-        },
-        "path": "/linkws",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "f584de15-2034-4170-a723-f48c2bae5e0f"
-    },
-    {
-      "password": "71409d3e488548e8bb076d229778f008",
-      "server": "104.17.147.77",
-      "server_port": 443,
-      "tag": "44.44🇬🇧",
-      "tls": {
-        "enabled": true,
-        "insecure": true,
-        "server_name": "bangladeshipatri.com"
-      },
-      "transport": {
-        "headers": {
-          "Host": "bangladeshipatri.com"
-        },
-        "path": "/6b777a91",
-        "type": "ws"
-      },
-      "type": "trojan"
-    },
-    {
-      "alter_id": 0,
-      "security": "auto",
-      "server": "195.123.240.45",
-      "server_port": "12947",
-      "tag": "45.45🇺🇸",
-      "tls": {
-        "enabled": true
-      },
-      "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "type": "ws",
         "path": "/",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "8259cb1c-dd6c-4739-9c88-af550d977525"
-    },
-    {
-      "alter_id": 0,
-      "security": "auto",
-      "server": "185.146.173.59",
-      "server_port": "443",
-      "tag": "46.46🇫🇷",
-      "tls": {
-        "enabled": true,
-        "server_name": "obdii.cfd"
-      },
-      "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
-        "headers": {
-          "Host": "obdii.cfd"
-        },
-        "path": "/linkws",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "05641cf5-58d2-4ba4-a9f1-b3cda0b1fb1d"
-    },
-    {
-      "password": "4732adfa16c6450bbef87264e41332db",
-      "server": "104.17.215.18",
-      "server_port": 443,
-      "tag": "47.47🇺🇸",
-      "tls": {
-        "enabled": true,
-        "insecure": true,
-        "server_name": "jobscareerforstudent.com"
-      },
-      "transport": {
-        "headers": {
-          "Host": "jobscareerforstudent.com"
-        },
-        "path": "/6b777a91",
-        "type": "ws"
-      },
-      "type": "trojan"
-    },
-    {
-      "alter_id": 0,
-      "security": "auto",
-      "server": "188.114.97.1",
-      "server_port": "443",
-      "tag": "48.48🇫🇷",
-      "tls": {
-        "enabled": true,
-        "server_name": "afrhms16v.bestxray.buzz"
-      },
-      "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
-        "headers": {
-          "Host": "afrhms16v.bestxray.buzz"
-        },
-        "path": "/linkws",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "f584de15-2034-4170-a723-f48c2bae5e0f"
-    },
-    {
-      "alter_id": 0,
-      "security": "auto",
-      "server": "172.67.219.194",
-      "server_port": "443",
-      "tag": "49.49🇩🇪",
-      "tls": {
-        "enabled": true,
-        "server_name": "denc36.xtooltech.cfd"
-      },
-      "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
-        "headers": {
-          "Host": "adenc36v.xtooltech.cfd"
-        },
-        "path": "/linkws",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "b321fd5d-e6ec-4293-a644-164e3885f52e"
-    },
-    {
-      "alter_id": 0,
-      "security": "auto",
-      "server": "172.67.131.108",
-      "server_port": "443",
-      "tag": "50.50🇩🇪",
-      "tls": {
-        "enabled": true,
-        "server_name": "hms02.fxiaomi.sbs"
-      },
-      "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
-        "headers": {
-          "Host": "hms02.fxiaomi.sbs"
-        },
-        "path": "/link",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "6c168fcc-2231-4f3b-8c1e-f6391692df4a"
-    },
-    {
-      "alter_id": 0,
-      "security": "auto",
-      "server": "188.114.97.16",
-      "server_port": "443",
-      "tag": "51.51🇫🇷",
-      "tls": {
-        "enabled": true,
-        "server_name": "hdfy6c5.cpionline.co"
-      },
-      "transport": {
-        "service_name": "lRkGCkYS9X5GFzoZoavn2kmJ",
-        "type": "grpc"
-      },
-      "type": "vmess",
-      "uuid": "4804f14b-c1f8-452d-a6ec-eff1490aeac9"
-    },
-    {
-      "alter_id": 0,
-      "security": "auto",
-      "server": "172.67.174.42",
-      "server_port": "443",
-      "tag": "52.52🇩🇪",
-      "tls": {
-        "enabled": true,
-        "server_name": "gwdef.sbs"
-      },
-      "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
-        "headers": {
-          "Host": "gwdef.sbs"
-        },
-        "path": "/linkws",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "bc864078-dcf3-4bf4-8dbf-ca9f200b56be"
-    },
-    {
-      "password": "242a3d8eee5e4ed1a6bfa4141d549a25",
-      "server": "198.41.220.12",
-      "server_port": 443,
-      "tag": "53.53🇺🇸",
-      "tls": {
-        "enabled": true,
-        "insecure": true,
-        "server_name": "jobscareerforlawyers.com"
-      },
-      "transport": {
-        "headers": {
-          "Host": "jobscareerforlawyers.com"
-        },
-        "path": "/6b777a91",
-        "type": "ws"
-      },
-      "type": "trojan"
-    },
-    {
-      "alter_id": 0,
-      "security": "auto",
-      "server": "linde06.indiavideo.sbs",
-      "server_port": "443",
-      "tag": "54.54🇫🇷",
-      "tls": {
-        "enabled": true,
-        "server_name": "linde06.indiavideo.sbs"
-      },
-      "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
-        "path": "/linkws",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "edbb1059-1633-4271-b66e-ed4fba47a1bf"
-    },
-    {
-      "alter_id": 0,
-      "security": "auto",
-      "server": "104.21.8.157",
-      "server_port": "2082",
-      "tag": "56.56🇫🇷",
-      "tls": {},
-      "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
           "Host": "s1c.v2.v001sss.xyz"
         },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "42🇫🇷 § 44",
+      "server": "188.114.96.1",
+      "server_port": 443,
+      "uuid": "f584de15-2034-4170-a723-f48c2bae5e0f",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "afrhms16v.bestxray.buzz",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/linkws",
+        "headers": {
+          "Host": "afrhms16v.bestxray.buzz"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "43🇺🇸✨ § 45",
+      "server": "205.134.180.147",
+      "server_port": 443,
+      "method": "chacha20-ietf-poly1305",
+      "password": "9Bvkw5aupNy8"
+    },
+    {
+      "type": "trojan",
+      "tag": "44🇬🇧 § 46",
+      "server": "104.17.147.77",
+      "server_port": 443,
+      "password": "71409d3e488548e8bb076d229778f008",
+      "tls": {
+        "enabled": true,
+        "server_name": "bangladeshipatri.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/6b777a91",
+        "headers": {
+          "Host": "bangladeshipatri.com"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "45🇺🇸 § 47",
+      "server": "195.123.240.45",
+      "server_port": 12947,
+      "uuid": "8259cb1c-dd6c-4739-9c88-af550d977525",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "195.123.240.45",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
         "path": "/",
-        "type": "ws"
-      },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
       "type": "vmess",
-      "uuid": "112ac36f-3f53-4e26-8371-d25c028e1b9a"
-    },
-    {
-      "password": "f0eb8c92ce8946aaba856569cff1a16b",
-      "server": "104.19.171.3",
+      "tag": "46🇫🇷 § 48",
+      "server": "185.146.173.59",
       "server_port": 443,
-      "tag": "58.58🇺🇸",
-      "tls": {
-        "enabled": true,
-        "insecure": true,
-        "server_name": "sherasheba.com"
-      },
-      "transport": {
-        "headers": {
-          "Host": "sherasheba.com"
-        },
-        "path": "/6b777a91",
-        "type": "ws"
-      },
-      "type": "trojan"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "CIZAAhQMKlkmW60Isq82PG",
-      "server": "81.19.141.45",
-      "server_port": 52873,
-      "tag": "59.59🇩🇪",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "BXkeUSabwj1rRTj4cLT3O5",
-      "server": "81.19.141.45",
-      "server_port": 52873,
-      "tag": "60.60🇩🇪",
-      "type": "shadowsocks"
-    },
-    {
-      "password": "wkmY1R4EcP",
-      "server": "65.20.115.19",
-      "server_port": 443,
-      "tag": "61.61🇸🇪✨",
-      "tls": {
-        "enabled": true,
-        "insecure": true
-      },
-      "transport": {},
-      "type": "trojan"
-    },
-    {
-      "alter_id": 0,
+      "uuid": "05641cf5-58d2-4ba4-a9f1-b3cda0b1fb1d",
       "security": "auto",
-      "server": "173.245.58.11",
-      "server_port": "443",
-      "tag": "62.62🇫🇷✨",
+      "authenticated_length": true,
       "tls": {
         "enabled": true,
-        "server_name": "worker-late28ygwuhw.motonob768.workers.dev"
+        "server_name": "obdii.cfd",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true
+        }
       },
+      "packet_encoding": "xudp",
       "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
-        "headers": {
-          "Host": "worker-late28ygwuhw.motonob768.workers.dev"
-        },
-        "path": "/glweidf.cfd/linkws",
-        "type": "ws"
-      },
-      "type": "vmess",
-      "uuid": "1052f24e-7b09-45eb-b0c5-d858eb124192"
-    },
-    {
-      "password": "242a3d8eee5e4ed1a6bfa4141d549a25",
-      "server": "162.159.153.2",
-      "server_port": 443,
-      "tag": "63.63🇺🇸",
-      "tls": {
-        "enabled": true,
-        "insecure": true,
-        "server_name": "jobscareerforlawyers.com"
-      },
-      "transport": {
-        "headers": {
-          "Host": "jobscareerforlawyers.com"
-        },
-        "path": "/6b777a91",
-        "type": "ws"
-      },
-      "type": "trojan"
-    },
-    {
-      "method": "chacha20-ietf-poly1305",
-      "password": "W74XFALLLuw6m5IA",
-      "server": "series-a2.samanehha.co",
-      "server_port": 443,
-      "tag": "64.64🇬🇧",
-      "type": "shadowsocks"
-    },
-    {
-      "alter_id": 0,
-      "security": "auto",
-      "server": "104.21.32.238",
-      "server_port": "443",
-      "tag": "65.65🇫🇷",
-      "tls": {
-        "enabled": true,
-        "server_name": "obdii.cfd"
-      },
-      "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "type": "ws",
+        "path": "/linkws",
         "headers": {
           "Host": "obdii.cfd"
         },
-        "path": "/linkws",
-        "type": "ws"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "47🇺🇸 § 49",
+      "server": "104.17.215.18",
+      "server_port": 443,
+      "password": "���i��ק",
+      "tls": {
+        "enabled": true,
+        "server_name": "jobscareerforstudent.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true
+        }
       },
+      "transport": {
+        "type": "ws",
+        "path": "/6b777a91",
+        "headers": {
+          "Host": "jobscareerforstudent.com"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
       "type": "vmess",
-      "uuid": "05641cf5-58d2-4ba4-a9f1-b3cda0b1fb1d"
+      "tag": "48🇫🇷 § 50",
+      "server": "188.114.97.1",
+      "server_port": 443,
+      "uuid": "f584de15-2034-4170-a723-f48c2bae5e0f",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "afrhms16v.bestxray.buzz",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/linkws",
+        "headers": {
+          "Host": "afrhms16v.bestxray.buzz"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "49🇩🇪 § 51",
+      "server": "172.67.219.194",
+      "server_port": 443,
+      "uuid": "b321fd5d-e6ec-4293-a644-164e3885f52e",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "denc36.xtooltech.cfd",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/linkws",
+        "headers": {
+          "Host": "adenc36v.xtooltech.cfd"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "50🇩🇪 § 52",
+      "server": "172.67.131.108",
+      "server_port": 443,
+      "uuid": "6c168fcc-2231-4f3b-8c1e-f6391692df4a",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "hms02.fxiaomi.sbs",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/link",
+        "headers": {
+          "Host": "hms02.fxiaomi.sbs"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "51🇫🇷 § 53",
+      "server": "188.114.97.16",
+      "server_port": 443,
+      "uuid": "4804f14b-c1f8-452d-a6ec-eff1490aeac9",
+      "security": "chacha20-poly1305",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "hdfy6c5.cpionline.co",
+        "alpn": "h2",
+        "utls": {
+          "enabled": true
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "grpc",
+        "service_name": "lRkGCkYS9X5GFzoZoavn2kmJ",
+        "idle_timeout": "15s",
+        "ping_timeout": "15s"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "52🇩🇪 § 54",
+      "server": "172.67.174.42",
+      "server_port": 443,
+      "uuid": "bc864078-dcf3-4bf4-8dbf-ca9f200b56be",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "gwdef.sbs",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/linkws",
+        "headers": {
+          "Host": "gwdef.sbs"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "53🇺🇸 § 55",
+      "server": "198.41.220.12",
+      "server_port": 443,
+      "password": "242a3d8eee5e4ed1a6bfa4141d549a25",
+      "tls": {
+        "enabled": true,
+        "server_name": "jobscareerforlawyers.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/6b777a91",
+        "headers": {
+          "Host": "jobscareerforlawyers.com"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "54🇫🇷 § 56",
+      "server": "linde06.indiavideo.sbs",
+      "server_port": 443,
+      "uuid": "edbb1059-1633-4271-b66e-ed4fba47a1bf",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "linde06.indiavideo.sbs",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/linkws",
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "55🇺🇸✨ § 57",
+      "server": "205.134.180.139",
+      "server_port": 443,
+      "method": "chacha20-ietf-poly1305",
+      "password": "lWaGPVFjmnag"
+    },
+    {
+      "type": "vmess",
+      "tag": "56🇫🇷 § 58",
+      "server": "104.21.8.157",
+      "server_port": 2082,
+      "uuid": "112ac36f-3f53-4e26-8371-d25c028e1b9a",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "s1c.v2.v001sss.xyz"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "57🇺🇸 § 59",
+      "server": "205.134.180.137",
+      "server_port": 443,
+      "method": "chacha20-ietf-poly1305",
+      "password": "g13S7doXar0A"
+    },
+    {
+      "type": "trojan",
+      "tag": "58🇺🇸 § 60",
+      "server": "104.19.171.3",
+      "server_port": 443,
+      "password": "f0eb8c92ce8946aaba856569cff1a16b",
+      "tls": {
+        "enabled": true,
+        "server_name": "sherasheba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/6b777a91",
+        "headers": {
+          "Host": "sherasheba.com"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "59🇩🇪 § 61",
+      "server": "81.19.141.45",
+      "server_port": 52873,
+      "method": "chacha20-ietf-poly1305",
+      "password": "CIZAAhQMKlkmW60Isq82PG"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "60🇩🇪 § 62",
+      "server": "81.19.141.45",
+      "server_port": 52873,
+      "method": "chacha20-ietf-poly1305",
+      "password": "BXkeUSabwj1rRTj4cLT3O5"
+    },
+    {
+      "type": "trojan",
+      "tag": "61🇸🇪✨ § 63",
+      "server": "65.20.115.19",
+      "server_port": 443,
+      "password": "wkmY1R4EcP",
+      "tls": {
+        "enabled": true,
+        "disable_sni": true,
+        "insecure": true
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "62🇫🇷✨ § 64",
+      "server": "173.245.58.11",
+      "server_port": 443,
+      "uuid": "1052f24e-7b09-45eb-b0c5-d858eb124192",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "worker-late28ygwuhw.motonob768.workers.dev",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/glweidf.cfd/linkws",
+        "headers": {
+          "Host": "worker-late28ygwuhw.motonob768.workers.dev"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "63🇺🇸 § 65",
+      "server": "162.159.153.2",
+      "server_port": 443,
+      "password": "242a3d8eee5e4ed1a6bfa4141d549a25",
+      "tls": {
+        "enabled": true,
+        "server_name": "jobscareerforlawyers.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/6b777a91",
+        "headers": {
+          "Host": "jobscareerforlawyers.com"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "64🇬🇧 § 66",
+      "server": "series-a2.samanehha.co",
+      "server_port": 443,
+      "method": "chacha20-ietf-poly1305",
+      "password": "W74XFALLLuw6m5IA"
+    },
+    {
+      "type": "vmess",
+      "tag": "65🇫🇷 § 67",
+      "server": "104.21.32.238",
+      "server_port": 443,
+      "uuid": "05641cf5-58d2-4ba4-a9f1-b3cda0b1fb1d",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "obdii.cfd",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/linkws",
+        "headers": {
+          "Host": "obdii.cfd"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     }
   ],
   "route": {
-    "auto_detect_interface": true,
-    "final": "proxy",
     "rules": [
       {
         "clash_mode": "Direct",
@@ -1366,9 +1685,11 @@
         "outbound": "proxy"
       },
       {
-        "outbound": "dns-out",
-        "protocol": "dns"
+        "protocol": "dns",
+        "outbound": "dns-out"
       }
-    ]
+    ],
+    "final": "proxy",
+    "auto_detect_interface": true
   }
 }
