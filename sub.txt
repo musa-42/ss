@@ -241,7 +241,11 @@
       "tag": "block"
     },
     {
-      "multiplex": {},
+      "multiplex": {
+        "enabled": true,
+        "max_connections": 8,
+        "protocol": "h2mux"
+      },
       "server": "ip.hy2deta.art",
       "server_port": 2083,
       "tag": "vless-🇩🇪-cdn",
@@ -257,7 +261,11 @@
       "uuid": "509b8fad-d814-4e1d-8e77-39759496cbaf"
     },
     {
-      "multiplex": {},
+      "multiplex": {
+        "enabled": true,
+        "max_connections": 8,
+        "protocol": "h2mux"
+      },
       "server": "ip.hy2deta.art",
       "server_port": 2053,
       "tag": "vless2-🇩🇪-cdn",
