@@ -242,9 +242,9 @@
     },
     {
       "multiplex": {
-        "enabled": true,
-        "max_connections": 8,
-        "protocol": "h2mux"
+        "enabled": true
+        //"max_connections": 8,
+        //"protocol": "h2mux"
       },
       "server": "ip.hy2deta.art",
       "server_port": 2083,
@@ -262,9 +262,9 @@
     },
     {
       "multiplex": {
-        "enabled": true,
-        "max_connections": 8,
-        "protocol": "h2mux"
+        "enabled": true
+        //"max_connections": 8,
+        //"protocol": "h2mux"
       },
       "server": "ip.hy2deta.art",
       "server_port": 2053,
