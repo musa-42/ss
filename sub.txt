@@ -61,6 +61,7 @@
       "outbounds": [
         "auto",
         "direct",
+        "vless-🇩🇪-cdn",
         "hysteria2-🇩🇪",
         "trojan-🇩🇪",
         "hysteria2-",
@@ -143,6 +144,7 @@
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
+        "vless-🇩🇪-cdn",
         "hysteria2-🇩🇪",
         "trojan-🇩🇪",
         "hysteria2-",
@@ -235,6 +237,25 @@
     {
       "type": "block",
       "tag": "block"
+    },
+    {
+      "multiplex": {},
+      "server": "ip.hy2deta.art",
+      "server_port": 2053,
+      "tag": "vless-🇩🇪-cdn",
+      "tls": {
+        "enabled": true
+      },
+      "transport": {
+        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "headers": {
+          "Host": "hy2deta.art"
+        },
+        "path": "/127/0/0/1",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "509b8fad-d814-4e1d-8e77-39759496cbaf"
     },
     {
       "type": "ssh",
