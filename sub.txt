@@ -1,35 +1,29 @@
 {
   "dns": {
+    "fakeip": {
+      "enabled": true,
+      "inet4_range": "198.18.0.1/15"
+    },
+    "disable_cache": true,
     "servers": [
       {
-        "tag": "proxy-dns",
-        "address": "tcp://8.8.8.8",
-        "address_resolver": "local-dns",
-        "detour": "proxy"
-      },
-      {
-        "tag": "local-dns",
-        "address": "local",
+        "address": "8.8.8.8",
         "detour": "direct"
       },
       {
-        "tag": "block",
-        "address": "rcode://success"
+        "tag": "fakeip",
+        "address": "fakeip"
       }
     ],
     "rules": [
       {
-        "source_ip_cidr": "172.19.0.0/30",
-        "clash_mode": "Global",
-        "server": "proxy-dns"
-      },
-      {
-        "source_ip_cidr": "172.19.0.0/30",
-        "server": "proxy-dns"
+        "server": "fakeip",
+        "query_type": [
+          "A",
+          "AAAA"
+        ]
       }
-    ],
-    "final": "local-dns",
-    "strategy": "prefer_ipv4"
+    ]
   },
   "inbounds": [
     {
@@ -37,21 +31,9 @@
       "mtu": 9000,
       "auto_route": true,
       "stack": "system",
-      "platform": {
-        "http_proxy": {
-          "enabled": true,
-          "server": "127.0.0.1",
-          "server_port": 2080
-        }
-      },
       "sniff": true,
-      "inet4_address": "172.19.0.1/30"
-    },
-    {
-      "type": "mixed",
-      "listen": "127.0.0.1",
-      "listen_port": 2080,
-      "sniff": true
+      "inet4_address": "172.19.0.1/30",
+      "inet6_address": "fdfe:dcba:9876::1/126"
     }
   ],
   "outbounds": [
@@ -60,12 +42,14 @@
       "tag": "proxy",
       "outbounds": [
         "auto",
-        "direct",
         "hysteria2-🇩🇪",
         "SSH-🇷🇸",
         "SSH-🇬🇧",
         "SSH-🇺🇸",
-        "SSH-🇧🇷"
+        "SSH-🇧🇷",
+        "SSH-🇵🇹",
+        "SSH-🇦🇲",
+        "SSH-🇬🇧-2"
       ]
     },
     {
@@ -76,7 +60,10 @@
         "SSH-🇷🇸",
         "SSH-🇬🇧",
         "SSH-🇺🇸",
-        "SSH-🇧🇷"
+        "SSH-🇧🇷",
+        "SSH-🇵🇹",
+        "SSH-🇦🇲",
+        "SSH-🇬🇧-2"
       ],
       "url": "http://www.gstatic.com/generate_204",
       "interval": "10m0s",
@@ -112,6 +99,30 @@
     },
     {
       "type": "ssh",
+      "tag": "SSH-🇬🇧-2",
+      "server": "139.162.227.85",
+      "server_port": 0,
+      "user": "dircreate",
+      "password": ""
+    },
+    {
+      "type": "ssh",
+      "tag": "SSH-🇦🇲",
+      "server": "81.89.215.146",
+      "server_port": 0,
+      "user": "admin",
+      "password": "Aaagrigorik512.."
+    },
+    {
+      "type": "ssh",
+      "tag": "SSH-🇵🇹",
+      "server": "88.157.139.218",
+      "server_port": 0,
+      "user": "x176843",
+      "password": "176843!+3n4 "
+    },
+    {
+      "type": "ssh",
       "tag": "SSH-🇺🇸",
       "server": "139.144.18.139",
       "server_port": 0,
@@ -143,6 +154,8 @@
     }
   ],
   "route": {
+    "auto_detect_interface": true,
+    "final": "proxy",
     "rules": [
       {
         "clash_mode": "Direct",
@@ -153,11 +166,9 @@
         "outbound": "proxy"
       },
       {
-        "protocol": "dns",
-        "outbound": "dns-out"
+        "outbound": "dns-out",
+        "protocol": "dns"
       }
-    ],
-    "final": "proxy",
-    "auto_detect_interface": true
+    ]
   }
 }
