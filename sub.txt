@@ -74,7 +74,6 @@
         "auto",
         "direct",
         "hy2-🇩🇪",
-        "hy2-🇩🇪-2",
         "SSH-🇷🇸",
         "SSH-🇺🇸"
       ],
@@ -85,7 +84,6 @@
       "interval": "10m",
       "outbounds": [
         "hy2-🇩🇪",
-        "hy2-🇩🇪-2",
         "SSH-🇷🇸",
         "SSH-🇺🇸"
       ],
@@ -125,28 +123,13 @@
     {
       "type": "hysteria2",
       "tag": "hy2-🇩🇪",
-      "server": "kevin.serverv.net",
+      "server": "kevin.iserver.store",
       "server_port": 8443,
       "obfs": {
         "type": "salamander",
-        "password": "KevinZakarian"
+        "password": "Telegram:@KevinZakarian"
       },
-      "password": "KevinZakarian",
-      "tls": {
-        "enabled": true,
-        "insecure": true
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "hy2-🇩🇪-2",
-      "server": "kevin.serverv.net",
-      "server_port": 443,
-      "obfs": {
-        "type": "salamander",
-        "password": "KevinZakarian"
-      },
-      "password": "KevinZakarian",
+      "password": "Telegram:@KevinZakarian",
       "tls": {
         "enabled": true,
         "insecure": true
